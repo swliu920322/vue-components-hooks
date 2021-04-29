@@ -1,4 +1,5 @@
 import { computed, nextTick, ref, unref } from "vue";
+import { Fn } from "../../../../types";
 
 export default function useVisible() {
   const visible = ref<boolean>(false);

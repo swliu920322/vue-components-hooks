@@ -1,5 +1,6 @@
 import { IModalProps, IFormProps, ICommonAction } from "../../../components";
 import { ComputedRef, VNodeTypes } from "vue";
+import { IObj } from "../../../types";
 
 export interface IFormModalProp extends IModalProps, IFormProps {
   // 初始值

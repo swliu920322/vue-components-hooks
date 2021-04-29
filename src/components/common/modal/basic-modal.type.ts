@@ -1,4 +1,5 @@
 import { ICommonAction } from "../table/basic-table.types";
+import { Fn } from "../../../types";
 
 export interface IModalProps {
   centered?: boolean;

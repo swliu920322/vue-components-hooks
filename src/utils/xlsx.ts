@@ -1,4 +1,5 @@
 import XLSX from "xlsx";
+import { Recordable } from "../types";
 
 export const exportFile = (json: Recordable[], keyMap: Recordable = {}, title = "文档") => {
   const changeKey = (obj: Recordable) => {

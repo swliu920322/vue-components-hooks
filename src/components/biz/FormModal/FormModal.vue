@@ -17,6 +17,7 @@
     IFormModalProp,
   } from "../../../components";
   import { message } from "ant-design-vue";
+  import { IObj } from "../../../types";
 
   export default defineComponent({
     name: "FormModal",

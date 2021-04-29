@@ -1,5 +1,6 @@
 import { IModalActions, IModalProps } from "../../modal/basic-modal.type";
 import { ref, unref } from "vue";
+import { Fn } from "../../../../types";
 
 export default function useModal(
   props: Partial<IModalProps>

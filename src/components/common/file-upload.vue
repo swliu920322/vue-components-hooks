@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-  import { importFile } from "@/utils/xlsx";
+  import { importFile } from "../../utils/xlsx";
   import { useMessage } from "../../hooks/useMessage";
   interface FileItem {
     uid: string;

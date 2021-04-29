@@ -7,7 +7,7 @@
   import { IModalActions, IModalProps } from "../../../components";
   import { basicModalProps } from "./basic-model.props";
   import { useVisible } from "./hooks";
-
+  import { IObj } from "../../../types";
   export default defineComponent({
     name: "basic-modal",
     props: basicModalProps,

@@ -1,4 +1,5 @@
 import { computed, ref, unref } from "vue";
+import { EmitType } from "../../../types";
 export interface IPagination {
   total: number;
   current: number;

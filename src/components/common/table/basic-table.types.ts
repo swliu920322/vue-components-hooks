@@ -1,6 +1,7 @@
 import { ColumnProps, tableRowSelection } from "ant-design-vue/lib/table/interface";
 import { IPagination } from "../../../components";
 import { ExtractPropTypes } from "vue";
+import { IObj } from "../../../types";
 export type SizeType = "default" | "middle" | "small" | "large";
 export interface IBasicColumn extends ColumnProps {
   flag?: "INDEX" | "DEFAULT" | "CHECKBOX" | "RADIO" | "ACTION";

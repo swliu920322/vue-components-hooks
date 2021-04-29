@@ -1,4 +1,5 @@
 import { PropType } from "vue";
+import { Fn } from "../../../types";
 
 export const basicModalProps = {
   centered: {

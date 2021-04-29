@@ -1,5 +1,6 @@
 import { ComputedRef, ref, unref, watch } from "vue";
 import { IBasicTableProps } from "../basic-table.types";
+import { IObj } from "../../../../types";
 
 export default function useTableStyle(propsRef: ComputedRef<Partial<IBasicTableProps>>) {
   function getRowClassName(record: IObj, index: number) {

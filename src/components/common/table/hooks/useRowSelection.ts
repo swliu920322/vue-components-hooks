@@ -1,5 +1,6 @@
 import { computed, ComputedRef, ref, unref } from "vue";
 import { IBasicTableProps, ITableRowSelection } from "../basic-table.types";
+import { EmitType } from "../../../../types";
 
 export default function useRowSelection(
   propsRef: ComputedRef<Partial<IBasicTableProps>>,
