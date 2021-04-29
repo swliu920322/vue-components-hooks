@@ -1,6 +1,6 @@
 {
   "name": "vue-components-hooks",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,6 +12,13 @@
   },
   "main": "src/components/index.ts",
   "types": "src/components/index.d.ts",
+  "files": [
+    "src/apis",
+    "src/components",
+    "src/hooks",
+    "src/types",
+    "src/utils"
+  ],
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
@@ -52,8 +59,6 @@
     "@purge-icons/generated": "^0.7.0",
     "axios": "^0.21.1",
     "ant-design-vue": "^2.1.2",
-    "lodash-es": "^4.17.21",
-    "@types/lodash-es": "^4.17.4",
     "vue": "^3.0.11",
     "xlsx": "^0.16.9"
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" style="height: 100%; overflow: hidden">
     <BizTable @register="register">
       <template v-slot:actions>
         <IconButton icon edit link>编辑</IconButton>
