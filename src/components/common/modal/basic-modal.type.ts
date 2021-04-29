@@ -1,4 +1,4 @@
-import { ICommonAction } from "@/components";
+import { ICommonAction } from "../table/basic-table.types";
 
 export interface IModalProps {
   centered?: boolean;

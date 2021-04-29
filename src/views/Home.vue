@@ -11,9 +11,7 @@
 
 <script lang="ts">
   import { defineComponent } from "vue";
-  import BizTable from "@/components/biz/bizTable/bizTable.vue";
-  import { useBizTable } from "@/components";
-  import IconButton from "@/components/common/icon-button.vue";
+  import { BizTable, IconButton, useBizTable } from "@/components";
 
   export default defineComponent({
     name: "Home",

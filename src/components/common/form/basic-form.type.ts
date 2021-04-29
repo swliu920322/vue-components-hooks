@@ -1,5 +1,5 @@
 import { NamePath } from "ant-design-vue/lib/form/interface";
-import { ICommonAction } from "@/components";
+import { ICommonAction } from "../../../components";
 
 export interface IFormProps {
   size: "default" | "small" | "large";

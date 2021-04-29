@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from "vue";
-  import { IFormActions, IFormProps } from "@/components";
+  import { IFormActions, IFormProps } from "../../../components";
   import { useCols } from "./hooks";
 
   export default defineComponent({

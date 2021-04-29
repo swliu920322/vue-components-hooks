@@ -20,7 +20,7 @@
 <script lang="ts">
   import { defineComponent, ref } from "vue";
   import { message } from "ant-design-vue";
-  import { FileService } from "@/apis/file";
+  import { FileService } from "../../apis/file";
   interface FileItem {
     uid: string;
     name?: string;

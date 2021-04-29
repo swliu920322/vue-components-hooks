@@ -1,5 +1,5 @@
 import { ColumnProps, tableRowSelection } from "ant-design-vue/lib/table/interface";
-import { IPagination } from "@/components";
+import { IPagination } from "../../../components";
 import { ExtractPropTypes } from "vue";
 export type SizeType = "default" | "middle" | "small" | "large";
 export interface IBasicColumn extends ColumnProps {

@@ -14,7 +14,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from "vue";
-  import { usePagination, IBasicTableActions, IBasicTableProps, useLoading } from "@/components";
+  import { usePagination, IBasicTableActions, IBasicTableProps, useLoading } from "../../../components";
   import { basicTableProps } from "./basic-table.props";
   import { useTableScroll, useColumns, useDataSource, useRowSelection, useTableStyle } from "./hooks";
 

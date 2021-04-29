@@ -1,4 +1,4 @@
-import { IFormProps } from "@/components";
+import { IFormProps } from "../../form/basic-form.type";
 import { computed, ref, Ref, unref, watch } from "vue";
 
 export default function useCols(propsRef: Ref<Partial<IFormProps>>) {

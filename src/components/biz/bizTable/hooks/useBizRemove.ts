@@ -1,6 +1,6 @@
-import { IBizTableProps, IBasicTableActions } from "@/components";
+import { IBizTableProps, IBasicTableActions } from "../../../../components";
 import { computed, ComputedRef, h, VNodeTypes } from "vue";
-import { useMessage } from "@/hooks/useMessage";
+import { useMessage } from "../../../../hooks/useMessage";
 
 export default function useBizRemove(
   getPropsRef: ComputedRef<Partial<IBizTableProps>>,

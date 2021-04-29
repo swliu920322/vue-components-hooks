@@ -1,4 +1,4 @@
-import { IModalActions, IModalProps } from "@/components/common/modal/basic-modal.type";
+import { IModalActions, IModalProps } from "../../modal/basic-modal.type";
 import { ref, unref } from "vue";
 
 export default function useModal(

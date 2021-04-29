@@ -1,6 +1,6 @@
 import { computed, ComputedRef, onUnmounted, Ref, ref, unref, watch } from "vue";
 import { throttle } from "lodash-es";
-import { IPagination } from "@/components/common/pagination/usePagination";
+import { IPagination } from "../../pagination/usePagination";
 import { IBasicColumn, IBasicTableProps, ITableRowSelection } from "../basic-table.types";
 interface IRefs {
   containerRef: Ref<HTMLDivElement | undefined>;

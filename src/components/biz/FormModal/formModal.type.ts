@@ -1,4 +1,4 @@
-import { IModalProps, IFormProps, ICommonAction } from "@/components";
+import { IModalProps, IFormProps, ICommonAction } from "../../../components";
 import { ComputedRef, VNodeTypes } from "vue";
 
 export interface IFormModalProp extends IModalProps, IFormProps {

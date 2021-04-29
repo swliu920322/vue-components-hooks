@@ -1,6 +1,6 @@
 import { computed, ComputedRef, ref, unref, watch } from "vue";
 import { IBasicColumn, IBasicTableProps } from "../basic-table.types";
-import { IPagination } from "@/components/common/pagination/usePagination";
+import { IPagination } from "../../pagination/usePagination";
 
 export default function useColumns(
   propsRef: ComputedRef<Partial<IBasicTableProps>>,

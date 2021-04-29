@@ -1,4 +1,4 @@
-import { IBizTableActions, IBizTableProps } from "@/components";
+import { IBizTableActions, IBizTableProps } from "../../../../components";
 import { ref } from "vue";
 import { tableMethods } from "../../../common/table/hooks";
 

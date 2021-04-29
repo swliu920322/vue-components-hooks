@@ -1,5 +1,5 @@
 import { computed, ComputedRef, onMounted, ref, unref } from "vue";
-import { IPagination, IBizTableProps, IBasicTableActions } from "@/components";
+import { IPagination, IBizTableProps, IBasicTableActions } from "../../../../components";
 
 export default function useBizData(
   getPropsRef: ComputedRef<Partial<IBizTableProps>>,

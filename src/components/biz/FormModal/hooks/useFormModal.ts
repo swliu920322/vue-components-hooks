@@ -1,4 +1,4 @@
-import { IFormModalActions, IFormModalProp } from "@/components";
+import { IFormModalActions, IFormModalProp } from "../../../../components";
 import { ref, unref } from "vue";
 
 export default function useFormModal(

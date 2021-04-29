@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { importFile } from "@/utils/xlsx";
-
+  import { useMessage } from "../../hooks/useMessage";
   interface FileItem {
     uid: string;
     name?: string;
@@ -34,7 +34,7 @@
   }
 
   import { defineComponent, ref } from "vue";
-  import { useMessage } from "@/hooks/useMessage";
+
   export default defineComponent({
     name: "file-upload",
     setup() {

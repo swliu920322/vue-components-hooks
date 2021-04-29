@@ -1,5 +1,5 @@
 import { ref, unref } from "vue";
-import { IFormActions, IFormProps } from "@/components";
+import { IFormActions, IFormProps } from "../../../../components";
 
 export default function useForm(props: Partial<IFormProps>): [(actions: IFormActions) => void, IFormActions] {
   const formRef = ref<IFormActions>();

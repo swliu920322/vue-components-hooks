@@ -8,7 +8,14 @@
 
 <script lang="ts">
   import { computed, defineComponent, nextTick, reactive, ref, unref, watch } from "vue";
-  import { BasicModal, useModal, BasicForm, useForm, IFormModalActions, IFormModalProp } from "@/components";
+  import {
+    BasicModal,
+    useModal,
+    BasicForm,
+    useForm,
+    IFormModalActions,
+    IFormModalProp,
+  } from "../../../components";
   import { message } from "ant-design-vue";
 
   export default defineComponent({

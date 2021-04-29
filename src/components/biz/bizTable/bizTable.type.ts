@@ -2,7 +2,7 @@ import {
   IBasicTableAction,
   IBasicTableProps,
   ICommonAction,
-} from "@/components/common/table/basic-table.types";
+} from "../../../components/common/table/basic-table.types";
 import { ComputedRef, VNodeTypes } from "vue";
 interface PageRequest {
   page: number;

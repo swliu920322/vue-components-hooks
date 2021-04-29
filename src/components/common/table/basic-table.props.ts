@@ -1,6 +1,6 @@
 import { PropType } from "vue";
 import { ITableRowSelection, SizeType } from "./basic-table.types";
-import { IPagination } from "@/components";
+import { IPagination } from "../../../components";
 
 export const basicTableProps = {
   columns: {

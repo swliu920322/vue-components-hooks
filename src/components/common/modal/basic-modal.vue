@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from "vue";
-  import { IModalActions, IModalProps } from "@/components";
+  import { IModalActions, IModalProps } from "../../../components";
   import { basicModalProps } from "./basic-model.props";
   import { useVisible } from "./hooks";
 
