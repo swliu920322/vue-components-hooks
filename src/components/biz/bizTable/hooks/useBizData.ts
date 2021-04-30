@@ -17,7 +17,7 @@ export default function useBizData(
       if (obj?.pageSize) {
         page.pageSize = obj.pageSize;
       }
-      const { queryFunc, queryFuncMap, querySideEffect, resultConfig } = unref(getPropsRef);
+      const { queryFunc, queryFuncMap, querySideEffect, resultConfigMap } = unref(getPropsRef);
       if (queryFunc) {
         const res: any = await queryFunc({
           pageRequest: {
@@ -29,25 +29,18 @@ export default function useBizData(
             descending: false,
           },
         });
-        const { pageConfig, resConfig } = resultConfig as {
-          pageConfig: string;
-          resConfig: string;
-        };
-        // resConfig传递为'',直接返回值，不分页
-        if (!resConfig) {
+        // resultConfigMap undefined,直接返回值，不分页
+        if (resultConfigMap === undefined) {
           dataSource.value = res;
           return;
         }
-
-        dataSource.value = queryFuncMap ? res[resConfig].map(queryFuncMap) : res[resConfig];
+        const { total, data } = resultConfigMap(res);
+        dataSource.value = queryFuncMap ? data.map(queryFuncMap) : data;
         if (querySideEffect && typeof querySideEffect === "function") {
-          querySideEffect(dataSource.value);
+          querySideEffect(computed(() => dataSource.value).value);
         }
 
-        tableMethods.setPagination({
-          ...page,
-          total: res[pageConfig]?.rowCount,
-        });
+        tableMethods.setPagination({ ...page, total });
         tableMethods.setLoading(false);
       } else {
         tableMethods.setLoading(false);

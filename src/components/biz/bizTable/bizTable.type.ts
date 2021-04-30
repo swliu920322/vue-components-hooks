@@ -29,10 +29,11 @@ export interface IBizTableProps extends IBasicTableProps {
   querySideEffect: (i: any[]) => void;
   // 是否在mounted自动查询
   mounted: boolean;
-  resultConfig: {
-    pageConfig: string;
-    resConfig: string;
-  };
+  resultConfigMap: (i?: any) => any;
+  // resultConfigMap: {
+  //   pageConfig: string;
+  //   resConfig: string;
+  // };
 }
 
 export interface IBizTableActions extends IBasicTableAction, ICommonAction<IBizTableProps> {

@@ -1,3 +1,5 @@
+import { PropType } from "vue";
+
 export const BizTableProps = {
   queryFuncMap: {
     type: Function,
@@ -11,11 +13,11 @@ export const BizTableProps = {
     type: Boolean,
     default: true,
   },
-  resultConfig: {
-    type: Object,
-    default: () => ({
-      pageConfig: "pageResult",
-      resConfig: "itemsList",
+  resultConfigMap: {
+    type: Function as PropType<(i?: any) => any>,
+    default: (i: any) => ({
+      total: i.pageResult.rowCount,
+      data: i.itemsList,
     }),
   },
   removeBefore: {

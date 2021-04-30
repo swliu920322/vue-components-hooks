@@ -20,9 +20,9 @@ export default function useBizRemove(
     return "删除选项";
   });
 
-  function beforeRemoveRef() {
+  async function beforeRemoveRef() {
     const { removeBefore } = getPropsRef.value;
-    return removeBefore && [true, undefined].includes(removeBefore());
+    return removeBefore && [true, undefined].includes(await removeBefore());
   }
 
   async function removeFunc(message: VNodeTypes, idsList: number[]) {
@@ -49,8 +49,8 @@ export default function useBizRemove(
     }
   }
 
-  async function removeItem(record: any) {
-    if (beforeRemoveRef()) {
+  async function removeItem(record: any): Promise<boolean> {
+    if (await beforeRemoveRef()) {
       let message;
       const { removeLabelFunc, rowKey } = getPropsRef.value;
       if (removeLabelFunc) {
@@ -61,14 +61,15 @@ export default function useBizRemove(
       await removeFunc(message, [record[rowKey || "id"]]);
       return true;
     }
+    return false;
   }
   async function removeItemAuto(record: any) {
-    const res = await removeItem(record);
-    res && (await rePageChange());
+    const requested = await removeItem(record);
+    requested && (await rePageChange());
   }
 
-  async function removeItems() {
-    if (beforeRemoveRef()) {
+  async function removeItems(): Promise<boolean> {
+    if (await beforeRemoveRef()) {
       const { removeLabelFunc } = getPropsRef.value;
       const idsList = tableMethods.getSelectedRowKeys();
       const rows = tableMethods.getSelectedRows();
@@ -84,10 +85,11 @@ export default function useBizRemove(
       await removeFunc(message.join(" , "), idsList);
       return true;
     }
+    return false;
   }
   async function removeItemsAuto() {
-    const res = await removeItems();
-    res && (await rePageChange());
+    const requested = await removeItems();
+    requested && (await rePageChange());
   }
   return {
     removeItem,
