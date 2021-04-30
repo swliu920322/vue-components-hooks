@@ -11,7 +11,9 @@ export default function useModalOpen(
   const isAddRef = ref<boolean>(false);
   function setModel(val: Record<string, any>) {
     Object.entries(val).forEach(([key, value]) => {
-      model[key] = value;
+      if (model[key] !== value) {
+        model[key] = value;
+      }
     });
   }
 

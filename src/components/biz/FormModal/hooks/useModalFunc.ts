@@ -21,14 +21,18 @@ export default function useModalFunc(
         if (onAdd && model.id === undefined) {
           addMap && setModel(await addMap(model));
           await onAdd(model);
-          message.success(title + "新增成功！");
-          pageChange && (await pageChange());
+          if (commonMap || addMap) {
+            message.success(title + "新增成功！");
+            pageChange && (await pageChange());
+          }
         }
         if (onEdit && model.id !== undefined) {
           editMap && setModel(await editMap(model));
           await onEdit(model);
-          message.success(title + "修改成功！");
-          pageChange && (await pageChange());
+          if (commonMap || editMap) {
+            message.success(title + "修改成功！");
+            pageChange && (await pageChange());
+          }
         }
       }
       await modalMethods.closeModal();

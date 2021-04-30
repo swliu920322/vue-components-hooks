@@ -13,8 +13,11 @@ interface OrderRequest {
   descending: boolean;
 }
 export interface IBizTableProps extends IBasicTableProps {
+  // 查询的api服务，只能填查询请求
   queryFunc: (i: { pageRequest: PageRequest; orderRequest: OrderRequest }) => Promise<any>;
+  // 查询后对返回值每一项的map转换
   queryFuncMap: (i: any) => any;
+  // 删除的api方法
   removeFunc: (args: any[]) => Promise<void> | void;
   // 删除弹框提示的title, type === string ? '删除' + removeTitle : removeTitle()
   removeTitle: string | (() => string);
@@ -29,11 +32,9 @@ export interface IBizTableProps extends IBasicTableProps {
   querySideEffect: (i: any[]) => void;
   // 是否在mounted自动查询
   mounted: boolean;
+  // 数据源的转换, 默认为 i => ({ total: i.pageResult.rowCount,data: i.itemsList })
+  // 之后换swagger也可以用
   resultConfigMap: (i?: any) => any;
-  // resultConfigMap: {
-  //   pageConfig: string;
-  //   resConfig: string;
-  // };
 }
 
 export interface IBizTableActions extends IBasicTableAction, ICommonAction<IBizTableProps> {
