@@ -1,6 +1,6 @@
 {
   "name": "vue-components-hooks",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

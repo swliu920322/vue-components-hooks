@@ -52,13 +52,13 @@ export default function useBizRemove(
   async function removeItem(record: any) {
     if (beforeRemoveRef()) {
       let message;
-      const { removeLabelFunc } = getPropsRef.value;
+      const { removeLabelFunc, rowKey } = getPropsRef.value;
       if (removeLabelFunc) {
         message = removeLabelFunc(record);
       } else {
         message = record.name;
       }
-      await removeFunc(message, [record.id]);
+      await removeFunc(message, [record[rowKey || "id"]]);
       return true;
     }
   }

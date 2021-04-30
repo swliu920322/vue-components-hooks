@@ -10,6 +10,9 @@ export interface IFormModalProp extends IModalProps, IFormProps {
   title: string | ((isAdd: boolean, model: IObj) => VNodeTypes);
   openAddModal: () => void;
   openEditModal: (record: any) => void;
+  commonMap: (item: any) => any;
+  addMap: (item: any) => any;
+  editMap: (item: any) => any;
 }
 
 export interface IFormModalActions extends ICommonAction<IFormModalProp> {
