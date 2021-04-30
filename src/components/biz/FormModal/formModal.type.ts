@@ -13,6 +13,7 @@ export interface IFormModalProp extends IModalProps, IFormProps {
   commonMap: (item: any) => any;
   addMap: (item: any) => any;
   editMap: (item: any) => any;
+  pageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
 }
 
 export interface IFormModalActions extends ICommonAction<IFormModalProp> {

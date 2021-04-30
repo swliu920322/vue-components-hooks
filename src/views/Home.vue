@@ -6,16 +6,21 @@
         <IconButton icon remove link>删除</IconButton>
       </template>
     </BizTable>
+    <FormModal @regitser="registerForm">
+      <a-form-item></a-form-item>
+      <a-form-item></a-form-item>
+    </FormModal>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from "vue";
-  import { BizTable, IconButton, useBizTable } from "@/components";
+  import { BizTable, IconButton, useBizTable, useFormModal } from "@/components";
+  import FormModal from "@/components/biz/FormModal/FormModal.vue";
 
   export default defineComponent({
     name: "Home",
-    components: { IconButton, BizTable },
+    components: { FormModal, IconButton, BizTable },
     setup() {
       const [register, tMethod] = useBizTable({
         columns: [
@@ -34,6 +39,9 @@
               rowCount: 20,
             },
           }),
+      });
+      const [registerForm, m] = useFormModal({
+        pageChange: tMethod.pageChange,
       });
       return {
         register,
