@@ -5,23 +5,35 @@ export interface IPagination {
   current: number;
   pageSize: number;
   size: string;
+  pageSizeOptions: string[];
   onChange?: (current: number, size: number) => void;
   onShowSizeChange?: (current: number, size: number) => void;
   showTotal: (total: number, range: [number, number]) => string;
   showSizeChanger: boolean;
   showQuickJumper: boolean;
+  simple: boolean;
+  showLessItems: boolean;
+  hideOnSinglePage: boolean;
+  disabled: boolean;
+  defaultPageSize: number;
 }
 export function usePagination(emit: EmitType, initial?: Partial<IPagination>) {
   const basePagination = {
     total: 0,
     current: 1,
     pageSize: 10,
+    defaultPageSize: 10,
     size: "default",
+    pageSizeOptions: ["10", "20", "30", "40"],
     onChange: undefined,
     onShowSizeChange: undefined,
     showTotal: (total: number, range: number[]) => `第${range[0]}~${range[1]}条，共${total}条`,
     showSizeChanger: true,
     showQuickJumper: true,
+    simple: false,
+    showLessItems: false,
+    hideOnSinglePage: false,
+    disabled: false,
   };
   const paginationRef = ref<IPagination | boolean>({
     ...basePagination,
