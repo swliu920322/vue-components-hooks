@@ -10,3 +10,5 @@ export { default as FileUpload } from "./common/file-upload.vue";
 export { default as TelePort } from "./common/tele-port.vue";
 export { default as IconButton } from "./common/icon-button.vue";
 export { default as AoIcon } from "./common/Icon.vue";
+
+export * from "../hooks";
