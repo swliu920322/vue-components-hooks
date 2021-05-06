@@ -18,7 +18,7 @@ export interface IBizTableProps extends IBasicTableProps {
   // 查询后对返回值每一项的map转换
   queryFuncMap: (i: any) => any;
   // 删除的api方法
-  removeFunc: (args: any[]) => Promise<void> | void;
+  removeFunc: (args: any[]) => Promise<any> | any;
   // 删除弹框提示的title, type === string ? '删除' + removeTitle : removeTitle()
   removeTitle: string | (() => string);
   /*

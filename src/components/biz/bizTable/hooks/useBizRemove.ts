@@ -44,8 +44,10 @@ export default function useBizRemove(
       } else {
         await createConfirmDel(message);
       }
-      await getPropsRef.value.removeFunc(idsList);
-      createMessage.success("删除成功!");
+      const res = await getPropsRef.value.removeFunc(idsList);
+      if (res !== false) {
+        createMessage.success("删除成功!");
+      }
     }
   }
 

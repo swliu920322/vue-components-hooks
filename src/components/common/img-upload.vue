@@ -20,7 +20,7 @@
 <script lang="ts">
   import { defineComponent, ref } from "vue";
   import { message } from "ant-design-vue";
-  import { FileService } from "../../apis/file";
+  import { PlusOutlined } from "@ant-design/icons-vue";
   interface FileItem {
     uid: string;
     name?: string;
@@ -37,25 +37,41 @@
     fileList: FileItem[];
   }
 
-  function getBase64(img: Blob, callback: (base64Url: string) => void) {
+  function getArrayBuffer(img: Blob, callback: (base64Url: ArrayBuffer) => void) {
     const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result as string));
-    reader.readAsDataURL(img);
+    reader.addEventListener("load", () => callback(reader.result as ArrayBuffer));
+    reader.readAsArrayBuffer(img);
   }
 
   export default defineComponent({
     name: "img-upload",
+    components: { PlusOutlined },
     setup() {
-      const hasId = ref<boolean>(false);
+      // 正要上传
+      const hasUpload = ref<boolean>(false);
 
       const fileList = ref<any[]>([]);
       const imageUrl = ref<string>("");
+      const imageBuffer = ref<ArrayBuffer>();
+
+      function get_image(arr_buffer: ArrayBuffer) {
+        const uInt8Array = new Uint8Array(arr_buffer);
+        let i = uInt8Array.length;
+        const binaryString = new Array(i);
+        while (i--) {
+          binaryString[i] = String.fromCharCode(uInt8Array[i]);
+        }
+        const data = binaryString.join("");
+        return "data:image/png;base64," + window.btoa(data);
+      }
+
       const handleChange = (info: FileInfo) => {
-        getBase64(info.file.originFileObj, (base64Url: string) => {
-          imageUrl.value = base64Url;
+        getArrayBuffer(info.file.originFileObj, (arrayBuffer) => {
+          imageBuffer.value = arrayBuffer;
+          imageUrl.value = get_image(arrayBuffer);
         });
         fileList.value = info.fileList.slice(-1);
-        hasId.value = false;
+        hasUpload.value = true;
       };
 
       const beforeUpload = (file: FileItem) => {
@@ -71,19 +87,20 @@
       };
 
       function setImgPath(path?: string) {
-        imageUrl.value = path || "";
+        imageUrl.value = path ? "data:image/png;base64," + path : "";
         fileList.value = [];
-        hasId.value = true;
+        hasUpload.value = false;
       }
 
-      async function upload() {
-        if (hasId.value || fileList.value.length === 0) {
-          return "0";
+      function upload() {
+        if (!hasUpload.value || fileList.value.length === 0) {
+          return "";
         }
-        const formDate = new FormData();
-        formDate.append("files", fileList.value[0].originFileObj);
-        const res = await FileService.uploadFile(formDate);
-        return res[0];
+        return new Uint8Array(imageBuffer.value as ArrayBuffer);
+        // const formDate = new FormData();
+        // formDate.append("files", fileList.value[0].originFileObj);
+        // const res = await FileService.uploadFile(formDate);
+        // return res[0];
       }
       return {
         fileList,
