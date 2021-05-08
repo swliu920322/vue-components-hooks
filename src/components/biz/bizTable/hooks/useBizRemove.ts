@@ -13,7 +13,7 @@ export default function useBizRemove(
     const { removeTitle } = getPropsRef.value;
     if (removeTitle) {
       if (typeof removeTitle === "string") {
-        return `删除` + getPropsRef.value.removeTitle;
+        return `是否删除` + getPropsRef.value.removeTitle;
       }
       return removeTitle();
     }

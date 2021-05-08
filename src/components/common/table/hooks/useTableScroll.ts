@@ -1,7 +1,7 @@
 import { computed, ComputedRef, onUnmounted, Ref, ref, unref, watch } from "vue";
-// import { throttle } from "lodash-es";
 import { IPagination } from "../../pagination/usePagination";
 import { IBasicColumn, IBasicTableProps, ITableRowSelection } from "../basic-table.types";
+import { throttle } from "../../../../utils";
 interface IRefs {
   containerRef: Ref<HTMLDivElement | undefined>;
   getColumnRef: ComputedRef<IBasicColumn[]>;
@@ -65,19 +65,7 @@ export default function useTableScroll(
       }
     }
   }
-  function throttle(callback: (...params: any[]) => any, delay = 20) {
-    let timer = 0;
-    return function tt(...args: any[]) {
-      if (timer) {
-        return;
-      }
-      timer = setTimeout(() => {
-        callback.apply(null, [...args]);
-        clearTimeout(timer);
-        timer = 0;
-      }, delay);
-    };
-  }
+
   function checkScroll() {
     const fn = throttle(getScrollHeight);
     window.removeEventListener("resize", fn);

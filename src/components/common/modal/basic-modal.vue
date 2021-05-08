@@ -8,6 +8,7 @@
   import { basicModalProps } from "./basic-model.props";
   import { useVisible } from "./hooks";
   import { IObj } from "../../../types";
+  import { once } from "../../../utils";
   export default defineComponent({
     name: "basic-modal",
     props: basicModalProps,
@@ -29,21 +30,22 @@
       function closeLoading() {
         okLoading.value = false;
       }
+      const onOk = once(async () => {
+        try {
+          openLoading();
+          await unref(okFuncRef)();
+          closeLoading();
+        } catch (e) {
+          console.log(e);
+          closeLoading();
+        }
+      });
       const getProps = computed(() => {
         return {
           ...props,
           ...attrs,
           onCancel: unref(cancelFuncRef),
-          onOk: async () => {
-            try {
-              openLoading();
-              await unref(okFuncRef)();
-              closeLoading();
-            } catch (e) {
-              console.log(e);
-              closeLoading();
-            }
-          },
+          onOk,
           okButtonProps: {
             /* eslint-disable */
             ...(attrs.okButtonProps ? (attrs.okButtonProps as IObj) : {}),
