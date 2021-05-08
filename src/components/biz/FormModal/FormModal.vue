@@ -49,9 +49,9 @@
         }
       }
 
-      function openAddModal() {
+      function openAddModal(param?: any) {
         const { openAddModal: openAdd } = getPropsRef.value;
-        openAdd && openAdd();
+        openAdd && openAdd(param);
       }
       function openEditModal(param: any) {
         const { openEditModal: openE } = getPropsRef.value;
