@@ -1,6 +1,12 @@
-import { IModalProps, IFormProps, ICommonAction } from "../../../components";
+import {
+  IModalProps,
+  IFormProps,
+  ICommonAction,
+  IModalActionBase,
+  IFormActionsBase,
+} from "../../../components";
 import { ComputedRef, VNodeTypes } from "vue";
-import { IObj } from "../../../types";
+import { Fn, IObj } from "../../../types";
 
 export interface IFormModalProp extends IModalProps, IFormProps {
   // 初始值
@@ -25,7 +31,7 @@ export interface IFormModalProp extends IModalProps, IFormProps {
   pageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
 }
 
-export interface IFormModalActions extends ICommonAction<IFormModalProp> {
+export interface IFormModalActions extends IModalActionBase, IFormActionsBase, ICommonAction<IFormModalProp> {
   // 手动打开新增弹框
   openNew: (i?: IObj) => Promise<void>;
   // 手动打开修改弹框
@@ -38,4 +44,11 @@ export interface IFormModalActions extends ICommonAction<IFormModalProp> {
   openAddModal: (record?: any) => void;
   // 手动触发传入的openEditModal
   openEditModal: (param: any) => void;
+  // 继承的
+  openModal: () => Promise<any>;
+  closeModal: () => Promise<any>;
+  openLoading: () => void;
+  closeLoading: () => void;
+  setOk: Fn;
+  setCancel: Fn;
 }

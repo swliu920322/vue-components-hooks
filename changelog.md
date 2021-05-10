@@ -12,3 +12,9 @@
 ### 1.1.10
 
 - basicModal 点击事件 2 秒内只能触发一次
+
+### 1.1.11
+- 对formModal新增了basicModal的基本操作，来源于继承
+
+### 1.1.12
+- 对formModal新增了basicForm的基本操作，来源于继承

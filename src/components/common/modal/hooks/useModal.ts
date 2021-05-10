@@ -18,21 +18,11 @@ export default function useModal(
     return unref(modalRef) as IModalActions;
   }
   const methods: IModalActions = {
-    setProps: (props: Partial<IModalProps>) => {
-      getModalInstance().setProps(props);
-    },
-    openModal: () => {
-      return getModalInstance().openModal();
-    },
-    closeModal: () => {
-      return getModalInstance().closeModal();
-    },
-    setOk: (param: Fn) => {
-      getModalInstance().setOk(param);
-    },
-    setCancel: (param?: Fn) => {
-      getModalInstance().setCancel(param);
-    },
+    setProps: (props: Partial<IModalProps>) => getModalInstance().setProps(props),
+    openModal: () => getModalInstance().openModal(),
+    closeModal: () => getModalInstance().closeModal(),
+    setOk: (param: Fn) => getModalInstance().setOk(param),
+    setCancel: (param?: Fn) => getModalInstance().setCancel(param),
     openLoading: () => getModalInstance().openLoading(),
     closeLoading: () => getModalInstance().closeLoading(),
   };

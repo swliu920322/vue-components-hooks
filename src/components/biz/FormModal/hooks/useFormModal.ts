@@ -1,5 +1,6 @@
 import { IFormModalActions, IFormModalProp } from "../../../../components";
 import { ref, unref } from "vue";
+import { Fn } from "@/types";
 
 export default function useFormModal(
   props: Partial<IFormModalProp>
@@ -26,6 +27,18 @@ export default function useFormModal(
     getModelRef: () => getFormModalInstance().getModelRef(),
     openAddModal: (param) => getFormModalInstance().openAddModal(param),
     openEditModal: (param) => getFormModalInstance().openEditModal(param),
+
+    openModal: () => getFormModalInstance().openModal(),
+    closeModal: () => getFormModalInstance().closeModal(),
+    setOk: (param: Fn) => getFormModalInstance().setOk(param),
+    setCancel: (param?: Fn) => getFormModalInstance().setCancel(param),
+    openLoading: () => getFormModalInstance().openLoading(),
+    closeLoading: () => getFormModalInstance().closeLoading(),
+
+    validate: () => getFormModalInstance().validate(),
+    resetFields: () => getFormModalInstance().resetFields(),
+    clearValidate: () => getFormModalInstance().clearValidate(),
+    scrollToField: (name, options) => getFormModalInstance().scrollToField(name, options),
   };
   return [register, methods];
 }

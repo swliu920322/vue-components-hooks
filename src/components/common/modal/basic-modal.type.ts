@@ -7,7 +7,7 @@ export interface IModalProps {
   onCancel: Fn;
   onOk: Fn;
 }
-export interface IModalActions extends ICommonAction<IModalProps> {
+export interface IModalActionBase {
   openModal: () => Promise<any>;
   closeModal: () => Promise<any>;
   openLoading: () => void;
@@ -15,3 +15,4 @@ export interface IModalActions extends ICommonAction<IModalProps> {
   setOk: Fn;
   setCancel: Fn;
 }
+export interface IModalActions extends IModalActionBase, ICommonAction<IModalProps> {}

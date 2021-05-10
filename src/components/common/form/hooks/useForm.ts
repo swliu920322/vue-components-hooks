@@ -14,21 +14,11 @@ export default function useForm(props: Partial<IFormProps>): [(actions: IFormAct
     return unref(formRef) as IFormActions;
   }
   const methods: IFormActions = {
-    setProps: (props) => {
-      getFormInstance()?.setProps(props);
-    },
-    validate: () => {
-      return getFormInstance().validate();
-    },
-    resetFields: () => {
-      getFormInstance().resetFields();
-    },
-    clearValidate: () => {
-      getFormInstance().clearValidate();
-    },
-    scrollToField: (name, options) => {
-      getFormInstance().scrollToField(name, options);
-    },
+    setProps: (props) => getFormInstance()?.setProps(props),
+    validate: () => getFormInstance().validate(),
+    resetFields: () => getFormInstance().resetFields(),
+    clearValidate: () => getFormInstance().clearValidate(),
+    scrollToField: (name, options) => getFormInstance().scrollToField(name, options),
   };
   return [register, methods];
 }

@@ -59,6 +59,8 @@
       }
 
       const regFormModal: IFormModalActions = {
+        ...modalMethods,
+        ...methods,
         getModelRef: () => computed(() => model),
         setModel,
         setProps,

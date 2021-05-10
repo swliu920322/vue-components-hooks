@@ -16,7 +16,7 @@ export interface IFormProps {
   col?: [number, number];
 }
 
-export interface IFormActions extends ICommonAction<IFormProps> {
+export interface IFormActionsBase {
   // 手动校验的方法
   validate: () => Promise<boolean>;
   // 重置整个表单的方法
@@ -26,3 +26,4 @@ export interface IFormActions extends ICommonAction<IFormProps> {
   // 滚动到对应的列的方法
   scrollToField: (name: NamePath, options: any) => void;
 }
+export interface IFormActions extends IFormActionsBase, ICommonAction<IFormProps> {}
