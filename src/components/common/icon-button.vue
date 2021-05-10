@@ -93,4 +93,14 @@
   });
 </script>
 
-<style scoped></style>
+<style scoped>
+  .ant-btn.ant-btn-link + .ant-btn.ant-btn-link.icon-button::before {
+    height: 50%;
+    content: "";
+    background: transparent;
+    border-radius: 0;
+    display: inline-block;
+    margin: auto;
+    border-left: 1px solid #606266;
+  }
+</style>
