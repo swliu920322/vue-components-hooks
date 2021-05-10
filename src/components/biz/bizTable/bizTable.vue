@@ -67,7 +67,7 @@
         removeItemsAuto,
         getDataSourceRef: () => computed(() => getDataSourceRef.value),
 
-        tableMethods,
+        basic: tableMethods,
       };
       emit("register", IBizTableAction);
 

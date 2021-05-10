@@ -45,6 +45,6 @@ export interface IFormModalActions extends ICommonAction<IFormModalProp> {
   // 手动触发传入的openEditModal
   openEditModal: (param: any) => void;
 
-  modalMethods: IModalActionBase;
-  formMethods: IFormActionsBase;
+  modal: IModalActionBase;
+  form: IFormActionsBase;
 }

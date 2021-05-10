@@ -2,6 +2,16 @@ import { IModalActions, IModalProps } from "../../modal/basic-modal.type";
 import { ref, unref } from "vue";
 import { Fn } from "../../../../types";
 
+export const getModalMethods = (getInstance: () => any): Omit<IModalActions, "setProps"> => {
+  return {
+    openModal: () => getInstance().openModal(),
+    closeModal: () => getInstance().closeModal(),
+    setOk: (param: Fn) => getInstance().setOk(param),
+    setCancel: (param?: Fn) => getInstance().setCancel(param),
+    openLoading: () => getInstance().openLoading(),
+    closeLoading: () => getInstance().closeLoading(),
+  };
+};
 export default function useModal(
   props: Partial<IModalProps>
 ): [(props: IModalActions) => void, IModalActions] {
@@ -17,14 +27,10 @@ export default function useModal(
     }
     return unref(modalRef) as IModalActions;
   }
-  const methods: IModalActions = {
+
+  const modalMethods: IModalActions = {
     setProps: (props: Partial<IModalProps>) => getModalInstance().setProps(props),
-    openModal: () => getModalInstance().openModal(),
-    closeModal: () => getModalInstance().closeModal(),
-    setOk: (param: Fn) => getModalInstance().setOk(param),
-    setCancel: (param?: Fn) => getModalInstance().setCancel(param),
-    openLoading: () => getModalInstance().openLoading(),
-    closeLoading: () => getModalInstance().closeLoading(),
+    ...getModalMethods(getModalInstance),
   };
-  return [register, methods];
+  return [register, modalMethods];
 }

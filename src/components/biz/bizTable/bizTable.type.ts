@@ -53,5 +53,5 @@ export interface IBizTableActions extends ICommonAction<IBizTableProps> {
   // 获取数据源的引用，计算类型
   getDataSourceRef: () => ComputedRef<any[]>;
   // 基础table功能
-  tableMethods: IBasicTableActionBase;
+  basic: IBasicTableActionBase;
 }

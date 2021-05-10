@@ -1,6 +1,7 @@
 import { IFormModalActions, IFormModalProp } from "../../../../components";
 import { ref, unref } from "vue";
-import { Fn } from "@/types";
+import { getFormMethods } from "../../../common/form/hooks/useForm";
+import { getModalMethods } from "../../../common/modal/hooks/useModal";
 
 export default function useFormModal(
   props: Partial<IFormModalProp>
@@ -27,20 +28,8 @@ export default function useFormModal(
     getModelRef: () => getFormModalInstance().getModelRef(),
     openAddModal: (param) => getFormModalInstance().openAddModal(param),
     openEditModal: (param) => getFormModalInstance().openEditModal(param),
-    modalMethods: {
-      openModal: () => getFormModalInstance().modalMethods.openModal(),
-      closeModal: () => getFormModalInstance().modalMethods.closeModal(),
-      setOk: (param: Fn) => getFormModalInstance().modalMethods.setOk(param),
-      setCancel: (param?: Fn) => getFormModalInstance().modalMethods.setCancel(param),
-      openLoading: () => getFormModalInstance().modalMethods.openLoading(),
-      closeLoading: () => getFormModalInstance().modalMethods.closeLoading(),
-    },
-    formMethods: {
-      validate: () => getFormModalInstance().formMethods.validate(),
-      resetFields: () => getFormModalInstance().formMethods.resetFields(),
-      clearValidate: () => getFormModalInstance().formMethods.clearValidate(),
-      scrollToField: (name, options) => getFormModalInstance().formMethods.scrollToField(name, options),
-    },
+    modal: getModalMethods(getFormModalInstance),
+    form: getFormMethods(getFormModalInstance),
   };
   return [register, methods];
 }

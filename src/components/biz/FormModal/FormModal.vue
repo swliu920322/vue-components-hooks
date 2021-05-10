@@ -31,15 +31,15 @@
       });
 
       const [register, modalMethods] = useModal({});
-      const [registerForm, methods] = useForm({});
+      const [registerForm, formMethods] = useForm({});
 
       const { isAddRef, openNew, openEdit, setModel, titleRef } = useModalOpen(
         getPropsRef,
-        methods,
+        formMethods,
         modalMethods,
         model
       );
-      const { cancelFunc, okFunc } = useModalFunc(getPropsRef, methods, modalMethods, model, setModel);
+      const { cancelFunc, okFunc } = useModalFunc(getPropsRef, formMethods, modalMethods, model, setModel);
       async function setProps(props: Partial<IFormModalProp>) {
         await nextTick();
         innerRef.value = props;
@@ -59,8 +59,8 @@
       }
 
       const regFormModal: IFormModalActions = {
-        modalMethods,
-        formMethods: methods,
+        modal: modalMethods,
+        form: formMethods,
         getModelRef: () => computed(() => model),
         setModel,
         setProps,

@@ -26,7 +26,7 @@ export default function useBizTable(
     removeItemsAuto: () => getInstance()?.removeItemsAuto(),
     getDataSourceRef: () => getInstance()?.getDataSourceRef(),
 
-    tableMethods: getTableMethods(getInstance),
+    basic: getTableMethods(getInstance),
   };
   return [register, actions];
 }

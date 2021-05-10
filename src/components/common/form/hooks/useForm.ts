@@ -1,6 +1,14 @@
 import { ref, unref } from "vue";
 import { IFormActions, IFormProps } from "../../../../components";
 
+export const getFormMethods = (getInstance: () => any): Omit<IFormActions, "setProps"> => {
+  return {
+    validate: () => getInstance().validate(),
+    resetFields: () => getInstance().resetFields(),
+    clearValidate: () => getInstance().clearValidate(),
+    scrollToField: (name, options) => getInstance().scrollToField(name, options),
+  };
+};
 export default function useForm(props: Partial<IFormProps>): [(actions: IFormActions) => void, IFormActions] {
   const formRef = ref<IFormActions>();
   function register(actions: IFormActions) {
@@ -15,10 +23,7 @@ export default function useForm(props: Partial<IFormProps>): [(actions: IFormAct
   }
   const methods: IFormActions = {
     setProps: (props) => getFormInstance()?.setProps(props),
-    validate: () => getFormInstance().validate(),
-    resetFields: () => getFormInstance().resetFields(),
-    clearValidate: () => getFormInstance().clearValidate(),
-    scrollToField: (name, options) => getFormInstance().scrollToField(name, options),
+    ...getFormMethods(getFormInstance),
   };
   return [register, methods];
 }
