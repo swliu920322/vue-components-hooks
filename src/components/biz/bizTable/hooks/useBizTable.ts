@@ -14,19 +14,19 @@ export default function useBizTable(
     if (!actionRef.value) {
       throw new Error("biz table has no instance");
     }
-    return actionRef.value;
+    return actionRef.value as IBizTableActions;
   }
   const actions: IBizTableActions = {
     setProps: (props: Partial<IBizTableProps>) => getInstance().setProps(props),
-    pageChange: (arg) => getInstance()?.pageChange(arg),
-    rePageChange: () => getInstance()?.pageChange(),
-    removeItem: (item: any) => getInstance()?.removeItem(item),
-    removeItemAuto: (item: any) => getInstance()?.removeItemAuto(item),
-    removeItems: () => getInstance()?.removeItems(),
-    removeItemsAuto: () => getInstance()?.removeItemsAuto(),
-    getDataSourceRef: () => getInstance()?.getDataSourceRef(),
+    pageChange: (arg) => getInstance().pageChange(arg),
+    rePageChange: () => getInstance().pageChange(),
+    removeItem: (item: any) => getInstance().removeItem(item),
+    removeItemAuto: (item: any) => getInstance().removeItemAuto(item),
+    removeItems: () => getInstance().removeItems(),
+    removeItemsAuto: () => getInstance().removeItemsAuto(),
+    getDataSourceRef: () => getInstance().getDataSourceRef(),
 
-    basic: getTableMethods(getInstance),
+    basic: getTableMethods(() => getInstance().basic),
   };
   return [register, actions];
 }

@@ -28,8 +28,8 @@ export default function useFormModal(
     getModelRef: () => getFormModalInstance().getModelRef(),
     openAddModal: (param) => getFormModalInstance().openAddModal(param),
     openEditModal: (param) => getFormModalInstance().openEditModal(param),
-    modal: getModalMethods(getFormModalInstance),
-    form: getFormMethods(getFormModalInstance),
+    modal: getModalMethods(() => getFormModalInstance().modal),
+    form: getFormMethods(() => getFormModalInstance().form),
   };
   return [register, methods];
 }
