@@ -1,5 +1,5 @@
 import {
-  IBasicTableAction,
+  IBasicTableActionBase,
   IBasicTableProps,
   ICommonAction,
 } from "../../../components/common/table/basic-table.types";
@@ -37,7 +37,7 @@ export interface IBizTableProps extends IBasicTableProps {
   resultConfigMap: (i?: any) => any;
 }
 
-export interface IBizTableActions extends IBasicTableAction, ICommonAction<IBizTableProps> {
+export interface IBizTableActions extends ICommonAction<IBizTableProps> {
   // 根据目前分页条件查询
   pageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
   // 根据目前分页条件，current=1查询
@@ -52,4 +52,6 @@ export interface IBizTableActions extends IBasicTableAction, ICommonAction<IBizT
   removeItemsAuto: () => void;
   // 获取数据源的引用，计算类型
   getDataSourceRef: () => ComputedRef<any[]>;
+  // 基础table功能
+  tableMethods: IBasicTableActionBase;
 }

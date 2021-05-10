@@ -58,7 +58,6 @@
         rePageChange
       );
       const IBizTableAction: IBizTableActions = {
-        ...tableMethods,
         setProps,
         pageChange,
         rePageChange,
@@ -67,6 +66,8 @@
         removeItems,
         removeItemsAuto,
         getDataSourceRef: () => computed(() => getDataSourceRef.value),
+
+        tableMethods,
       };
       emit("register", IBizTableAction);
 

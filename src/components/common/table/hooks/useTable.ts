@@ -1,8 +1,7 @@
 import { IBasicTableActions, IBasicTableProps } from "../basic-table.types";
 import { ref } from "vue";
 
-export const tableMethods = (getInstance: () => any): IBasicTableActions => ({
-  setProps: (params) => getInstance()?.setProps(params),
+export const getTableMethods = (getInstance: () => any): Omit<IBasicTableActions, "setProps"> => ({
   setPagination: (pagination) => getInstance()?.setPagination(pagination),
   getPagination: () => getInstance()?.getPagination(),
   getDataSource: () => getInstance()?.getDataSource(),
@@ -27,6 +26,9 @@ export default function useTable(
     }
     return tableRef.value;
   }
-
-  return [register, tableMethods(getInstance)];
+  const tableMethods: IBasicTableActions = {
+    setProps: (params) => getInstance()?.setProps(params),
+    ...getTableMethods(getInstance),
+  };
+  return [register, tableMethods];
 }

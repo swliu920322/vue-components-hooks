@@ -27,18 +27,20 @@ export default function useFormModal(
     getModelRef: () => getFormModalInstance().getModelRef(),
     openAddModal: (param) => getFormModalInstance().openAddModal(param),
     openEditModal: (param) => getFormModalInstance().openEditModal(param),
-
-    openModal: () => getFormModalInstance().openModal(),
-    closeModal: () => getFormModalInstance().closeModal(),
-    setOk: (param: Fn) => getFormModalInstance().setOk(param),
-    setCancel: (param?: Fn) => getFormModalInstance().setCancel(param),
-    openLoading: () => getFormModalInstance().openLoading(),
-    closeLoading: () => getFormModalInstance().closeLoading(),
-
-    validate: () => getFormModalInstance().validate(),
-    resetFields: () => getFormModalInstance().resetFields(),
-    clearValidate: () => getFormModalInstance().clearValidate(),
-    scrollToField: (name, options) => getFormModalInstance().scrollToField(name, options),
+    modalMethods: {
+      openModal: () => getFormModalInstance().modalMethods.openModal(),
+      closeModal: () => getFormModalInstance().modalMethods.closeModal(),
+      setOk: (param: Fn) => getFormModalInstance().modalMethods.setOk(param),
+      setCancel: (param?: Fn) => getFormModalInstance().modalMethods.setCancel(param),
+      openLoading: () => getFormModalInstance().modalMethods.openLoading(),
+      closeLoading: () => getFormModalInstance().modalMethods.closeLoading(),
+    },
+    formMethods: {
+      validate: () => getFormModalInstance().formMethods.validate(),
+      resetFields: () => getFormModalInstance().formMethods.resetFields(),
+      clearValidate: () => getFormModalInstance().formMethods.clearValidate(),
+      scrollToField: (name, options) => getFormModalInstance().formMethods.scrollToField(name, options),
+    },
   };
   return [register, methods];
 }

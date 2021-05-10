@@ -63,7 +63,7 @@ export interface IBasicTableProps {
 export interface ICommonAction<T extends any = any> {
   setProps: (args: Partial<T>) => void;
 }
-export interface IBasicTableAction {
+export interface IBasicTableActionBase {
   // 手动设置分页
   setPagination: (pagination: Partial<IPagination> | boolean) => void;
   // 获取分页
@@ -83,6 +83,6 @@ export interface IBasicTableAction {
   // 情况选择的keys
   clearSelectedRowKeys: () => void;
 }
-export interface IBasicTableActions extends IBasicTableAction {
+export interface IBasicTableActions extends IBasicTableActionBase {
   setProps: (args: Partial<IBasicTableProps>) => void;
 }

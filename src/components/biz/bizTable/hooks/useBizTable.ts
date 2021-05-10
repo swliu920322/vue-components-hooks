@@ -1,6 +1,6 @@
 import { IBizTableActions, IBizTableProps } from "../../../../components";
 import { ref } from "vue";
-import { tableMethods } from "../../../common/table/hooks";
+import { getTableMethods } from "../../../common/table/hooks";
 
 export default function useBizTable(
   props: Partial<IBizTableProps>
@@ -17,7 +17,7 @@ export default function useBizTable(
     return actionRef.value;
   }
   const actions: IBizTableActions = {
-    ...tableMethods(getInstance),
+    setProps: (props: Partial<IBizTableProps>) => getInstance().setProps(props),
     pageChange: (arg) => getInstance()?.pageChange(arg),
     rePageChange: () => getInstance()?.pageChange(),
     removeItem: (item: any) => getInstance()?.removeItem(item),
@@ -25,6 +25,8 @@ export default function useBizTable(
     removeItems: () => getInstance()?.removeItems(),
     removeItemsAuto: () => getInstance()?.removeItemsAuto(),
     getDataSourceRef: () => getInstance()?.getDataSourceRef(),
+
+    tableMethods: getTableMethods(getInstance),
   };
   return [register, actions];
 }
