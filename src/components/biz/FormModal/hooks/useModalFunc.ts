@@ -38,7 +38,6 @@ export default function useModalFunc(
       await modalMethods.closeModal();
     } catch (e) {
       modalMethods.closeLoading();
-      message.error(e.message);
     }
   }
   async function cancelFunc() {
