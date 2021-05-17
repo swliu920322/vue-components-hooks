@@ -1,8 +1,10 @@
 <template>
   <BasicModal @register="register" v-bind="$attrs.modal" :title="titleRef">
+    <slot name="header" :model="model" :isAdd="isAddRef" />
     <BasicForm @register="registerForm" v-bind="$attrs.form" :model="model">
       <slot name="form" :model="model" :isAdd="isAddRef" />
     </BasicForm>
+    <slot name="footer" :model="model" :isAdd="isAddRef" />
   </BasicModal>
 </template>
 

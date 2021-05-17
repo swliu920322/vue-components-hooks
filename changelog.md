@@ -36,3 +36,7 @@
 ### 1.1.17
 
 - 移除 formModal 保存时的错误提示，交给系统
+
+### 1.1.18
+
+- 为formModal增加了header和footer的插槽
