@@ -39,4 +39,9 @@
 
 ### 1.1.18
 
-- 为formModal增加了header和footer的插槽
+- 为 formModal 增加了 header 和 footer 的插槽
+
+### 1.1.19
+
+- 为 formModal 增加了 rePageChange 策略，新增会走 rePageChange，修改会走 pageChange，确保修改时刷新当前页。
+- 增加 afterAdd 和 afterEdit，使用后新增成功自己控制消息和刷新策略, 参数为model和接口的返回值

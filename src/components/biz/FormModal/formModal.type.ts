@@ -27,8 +27,11 @@ export interface IFormModalProp extends IModalProps, IFormProps {
   openAddModal: (record?: any) => void;
   // 打开修改model
   openEditModal: (record: any) => void;
+  afterAdd: (model: IObj, res: any) => Promise<any>;
+  afterEdit: (model: IObj, res: any) => Promise<any>;
   // 重新查询的方法，如果传入，自动新增和修改结束后会调用
   pageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
+  rePageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
 }
 
 export interface IFormModalActions extends ICommonAction<IFormModalProp> {

@@ -10,7 +10,19 @@ export default function useModalFunc(
   setModel: (val: Record<string, any>) => void
 ) {
   async function okFunc() {
-    const { onOk, onAdd, onEdit, commonMap, addMap, editMap, title, pageChange } = unref(getPropsRef);
+    const {
+      onOk,
+      onAdd,
+      onEdit,
+      commonMap,
+      addMap,
+      editMap,
+      title,
+      afterAdd,
+      afterEdit,
+      pageChange,
+      rePageChange,
+    } = unref(getPropsRef);
     try {
       await methods.validate();
       Reflect.deleteProperty(model, "isTrusted");
@@ -20,16 +32,20 @@ export default function useModalFunc(
       } else {
         if (onAdd && model.id === undefined) {
           addMap && setModel(await addMap(model));
-          await onAdd(model);
-          if (commonMap || addMap) {
+          const res = await onAdd(model);
+          if (afterAdd) {
+            await afterAdd(model, res);
+          } else if (commonMap || addMap) {
             message.success(title + "新增成功！");
-            pageChange && (await pageChange());
+            rePageChange && (await rePageChange());
           }
         }
         if (onEdit && model.id !== undefined) {
           editMap && setModel(await editMap(model));
-          await onEdit(model);
-          if (commonMap || editMap) {
+          const res = await onEdit(model);
+          if (afterEdit) {
+            await afterEdit(model, res);
+          } else if (commonMap || editMap) {
             message.success(title + "修改成功！");
             pageChange && (await pageChange());
           }
