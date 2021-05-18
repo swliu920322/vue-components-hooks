@@ -19,7 +19,7 @@ export default function useBizTable(
   const actions: IBizTableActions = {
     setProps: (props: Partial<IBizTableProps>) => getInstance().setProps(props),
     pageChange: (arg) => getInstance().pageChange(arg),
-    rePageChange: () => getInstance().pageChange(),
+    rePageChange: () => getInstance().rePageChange(),
     removeItem: (item: any) => getInstance().removeItem(item),
     removeItemAuto: (item: any) => getInstance().removeItemAuto(item),
     removeItems: () => getInstance().removeItems(),

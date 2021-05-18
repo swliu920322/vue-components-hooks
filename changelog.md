@@ -45,3 +45,9 @@
 
 - 为 formModal 增加了 rePageChange 策略，新增会走 rePageChange，修改会走 pageChange，确保修改时刷新当前页。
 - 增加 afterAdd 和 afterEdit，使用后新增成功自己控制消息和刷新策略, 参数为model和接口的返回值
+
+### 1.1.20
+- 为formModal增加了类型，用来统一formModal参数
+
+### 1.2.1
+- 修复bizTable的rePageChang暴露错误的问题

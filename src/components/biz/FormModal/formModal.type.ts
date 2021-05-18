@@ -51,3 +51,8 @@ export interface IFormModalActions extends ICommonAction<IFormModalProp> {
   modal: IModalActionBase;
   form: IFormActionsBase;
 }
+
+export interface IFormPageParam {
+  pageChange: (obj?: { current?: number; pageSize?: number }) => Promise<void>;
+  rePageChange: () => Promise<void>;
+}
