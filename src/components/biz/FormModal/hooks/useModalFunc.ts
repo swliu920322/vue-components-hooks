@@ -1,5 +1,5 @@
 import { message } from "ant-design-vue";
-import { ComputedRef, UnwrapRef, unref } from "vue";
+import { ComputedRef, UnwrapRef, unref, Ref } from "vue";
 import { IFormActions, IFormModalProp, IModalActions } from "../../../../components";
 
 export default function useModalFunc(
@@ -7,8 +7,17 @@ export default function useModalFunc(
   methods: IFormActions,
   modalMethods: IModalActions,
   model: UnwrapRef<Record<string, any>>,
-  setModel: (val: Record<string, any>) => void
+  setModel: (val: Record<string, any>) => void,
+  isAddRef: Ref<boolean>
 ) {
+  function sucMsg(type: string) {
+    const { title } = getPropsRef.value;
+    if (typeof title === "function") {
+      message.success(title(isAddRef.value, model) + "成功！");
+    } else {
+      message.success(title + `${type}成功！`);
+    }
+  }
   async function okFunc() {
     const {
       onOk,
@@ -17,7 +26,6 @@ export default function useModalFunc(
       commonMap,
       addMap,
       editMap,
-      title,
       afterAdd,
       afterEdit,
       pageChange,
@@ -36,7 +44,7 @@ export default function useModalFunc(
           if (afterAdd) {
             await afterAdd(model, res);
           } else if (commonMap || addMap) {
-            message.success(title + "新增成功！");
+            sucMsg("新增");
             rePageChange && (await rePageChange());
           }
         }
@@ -46,7 +54,7 @@ export default function useModalFunc(
           if (afterEdit) {
             await afterEdit(model, res);
           } else if (commonMap || editMap) {
-            message.success(title + "修改成功！");
+            sucMsg("修改");
             pageChange && (await pageChange());
           }
         }

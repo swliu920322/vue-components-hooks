@@ -54,6 +54,10 @@
 
 - 修复 bizTable 的 rePageChang 暴露错误的问题
 
-### 1.2.2
+### 1.2.2 2021-5-19
 
 - 为 bizTable 新增 getAllSelectedRowKeys 和 getAllSelectedRows 方法，用来获得所有页的选中 keys 和 rows
+
+### 1.2.3 2021-5-19
+
+- 修复formModal title为函数的时候，新增保存的提示错误

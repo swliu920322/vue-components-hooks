@@ -41,7 +41,14 @@
         modalMethods,
         model
       );
-      const { cancelFunc, okFunc } = useModalFunc(getPropsRef, formMethods, modalMethods, model, setModel);
+      const { cancelFunc, okFunc } = useModalFunc(
+        getPropsRef,
+        formMethods,
+        modalMethods,
+        model,
+        setModel,
+        isAddRef
+      );
       async function setProps(props: Partial<IFormModalProp>) {
         await nextTick();
         innerRef.value = props;
