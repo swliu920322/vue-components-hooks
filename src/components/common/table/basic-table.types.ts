@@ -84,7 +84,7 @@ export interface IBasicTableActionBase {
   getAllSelectedRows: () => any[];
   // 获取所有页选中的keys
   getAllSelectedRowKeys: () => any[];
-  // 情况选择的keys
+  // 清除选择的keys
   clearSelectedRowKeys: () => void;
 }
 export interface IBasicTableActions extends IBasicTableActionBase {
