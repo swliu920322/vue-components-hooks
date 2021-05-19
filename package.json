@@ -1,6 +1,6 @@
 {
   "name": "vue-components-hooks",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -17,7 +17,8 @@
     "src/components",
     "src/hooks",
     "src/types",
-    "src/utils"
+    "src/utils",
+    "changelog.md"
   ],
   "dependencies": {
     "axios": "^0.21.1",

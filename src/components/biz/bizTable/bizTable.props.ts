@@ -9,6 +9,10 @@ export const BizTableProps = {
     type: String,
     default: "选项",
   },
+  removeCurrent: {
+    type: Boolean,
+    default: false,
+  },
   mounted: {
     type: Boolean,
     default: true,

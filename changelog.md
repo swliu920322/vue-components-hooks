@@ -44,10 +44,16 @@
 ### 1.1.19
 
 - 为 formModal 增加了 rePageChange 策略，新增会走 rePageChange，修改会走 pageChange，确保修改时刷新当前页。
-- 增加 afterAdd 和 afterEdit，使用后新增成功自己控制消息和刷新策略, 参数为model和接口的返回值
+- 增加 afterAdd 和 afterEdit，使用后新增成功自己控制消息和刷新策略, 参数为 model 和接口的返回值
 
 ### 1.1.20
-- 为formModal增加了类型，用来统一formModal参数
+
+- 为 formModal 增加了类型，用来统一 formModal 参数
 
 ### 1.2.1
-- 修复bizTable的rePageChang暴露错误的问题
+
+- 修复 bizTable 的 rePageChang 暴露错误的问题
+
+### 1.2.2
+
+- 为 bizTable 新增 getAllSelectedRowKeys 和 getAllSelectedRows 方法，用来获得所有页的选中 keys 和 rows

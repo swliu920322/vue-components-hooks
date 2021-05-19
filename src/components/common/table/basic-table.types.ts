@@ -76,10 +76,14 @@ export interface IBasicTableActionBase {
   setLoading: (val: boolean) => void;
   // 设置选中的keys
   setSelectedRowKeys: (rowKeys: any[]) => void;
-  // 获取选择的行
+  // 获取当前页选择的行
   getSelectedRows: () => any[];
-  // 获取选择的keys
-  getSelectedRowKeys: () => number[];
+  // 获取当前页选中的keys
+  getSelectedRowKeys: () => any[];
+  // 获取所有页选择的行
+  getAllSelectedRows: () => any[];
+  // 获取所有页选中的keys
+  getAllSelectedRowKeys: () => any[];
   // 情况选择的keys
   clearSelectedRowKeys: () => void;
 }

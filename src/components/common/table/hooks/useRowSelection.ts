@@ -1,4 +1,4 @@
-import { computed, ComputedRef, ref, unref } from "vue";
+import { computed, ComputedRef, reactive, ref, unref } from "vue";
 import { IBasicTableProps, ITableRowSelection } from "../basic-table.types";
 import { EmitType } from "../../../../types";
 
@@ -8,6 +8,7 @@ export default function useRowSelection(
   emit: EmitType
 ) {
   const selectedRowsRef = ref<any[]>([]);
+  const selectedRowsAllRef = reactive<any>({});
   const selectedRowKeysRef = ref<any[]>([]);
 
   const getRowSelectionRef = computed(() => {
@@ -20,6 +21,16 @@ export default function useRowSelection(
       hideDefaultSelections: false,
       columnWidth: 40,
       onChange: (selectedRowKeys: string[], selectedRows: any[]) => {
+        const rowKey = propsRef.value.rowKey || "id";
+        selectedRows.forEach((i) => {
+          selectedRowsAllRef[i[rowKey]] = i;
+        });
+        Object.keys(selectedRowsAllRef).forEach((key) => {
+          if (selectedRowKeys.findIndex((ii) => ii === key) === -1) {
+            Reflect.deleteProperty(selectedRowsAllRef, key);
+          }
+        });
+
         selectedRowKeysRef.value = selectedRowKeys;
         selectedRowsRef.value = selectedRows;
         emit("selection-change", {
@@ -43,8 +54,10 @@ export default function useRowSelection(
     selectedRowKeysRef.value = [];
   }
   return {
+    getAllSelectedRows: () => unref(Object.values(selectedRowsAllRef)),
+    getAllSelectedRowKeys: () => unref(selectedRowKeysRef),
     getSelectedRows: () => unref(selectedRowsRef),
-    getSelectedRowKeys: () => unref(selectedRowKeysRef),
+    getSelectedRowKeys: () => unref(selectedRowsRef.value.map((i) => i[propsRef.value.rowKey || "id"])),
     setSelectedRowKeys,
     getRowSelectionRef,
     clearSelectedRowKeys,

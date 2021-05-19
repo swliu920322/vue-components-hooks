@@ -59,6 +59,8 @@
         setSelectedRowKeys,
         getSelectedRowKeys,
         getSelectedRows,
+        getAllSelectedRows,
+        getAllSelectedRowKeys,
         clearSelectedRowKeys,
       } = useRowSelection(getPropsRef, getDataSourceRef, emit);
       // @ts-ignore
@@ -109,6 +111,8 @@
         getPagination: () => unref(getPaginationRef),
         getSelectedRowKeys,
         getSelectedRows,
+        getAllSelectedRows,
+        getAllSelectedRowKeys,
         setSelectedRowKeys,
         clearSelectedRowKeys,
       };

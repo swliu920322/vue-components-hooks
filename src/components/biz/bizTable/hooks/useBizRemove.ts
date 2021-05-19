@@ -25,7 +25,7 @@ export default function useBizRemove(
     return removeBefore && [true, undefined].includes(await removeBefore());
   }
 
-  async function removeFunc(message: VNodeTypes, idsList: number[]) {
+  async function removeFunc(message: VNodeTypes, idsList: any[]) {
     if (getPropsRef.value.removeFunc) {
       if (typeof message === "string") {
         await createConfirmDel(
@@ -46,7 +46,8 @@ export default function useBizRemove(
       }
       const res = await getPropsRef.value.removeFunc(idsList);
       if (res !== false) {
-        createMessage.success("删除成功!");
+        const msg = getPropsRef.value.removeTitle !== "选项" ? getPropsRef.value.removeTitle : "";
+        createMessage.success(`删除${msg}成功!`);
       }
     }
   }
@@ -72,9 +73,11 @@ export default function useBizRemove(
 
   async function removeItems(): Promise<boolean> {
     if (await beforeRemoveRef()) {
-      const { removeLabelFunc } = getPropsRef.value;
-      const idsList = tableMethods.getSelectedRowKeys();
-      const rows = tableMethods.getSelectedRows();
+      const { removeLabelFunc, removeCurrent } = getPropsRef.value;
+      const idsList = removeCurrent
+        ? tableMethods.getSelectedRowKeys()
+        : tableMethods.getAllSelectedRowKeys();
+      const rows = removeCurrent ? tableMethods.getSelectedRows() : tableMethods.getAllSelectedRows();
       if (idsList.length === 0) {
         return createMessage.error("请先勾选需要删除选项的复选框");
       }

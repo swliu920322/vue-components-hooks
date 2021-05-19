@@ -10,6 +10,8 @@ export const getTableMethods = (getInstance: () => any): Omit<IBasicTableActions
   setSelectedRowKeys: (rowKeys: string[]) => getInstance()?.setSelectedRowKeys(rowKeys),
   getSelectedRows: () => getInstance()?.getSelectedRows(),
   getSelectedRowKeys: () => getInstance()?.getSelectedRowKeys(),
+  getAllSelectedRows: () => getInstance()?.getAllSelectedRows(),
+  getAllSelectedRowKeys: () => getInstance()?.getAllSelectedRowKeys(),
   clearSelectedRowKeys: () => getInstance()?.clearSelectedRowKeys(),
 });
 export default function useTable(
