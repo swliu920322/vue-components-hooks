@@ -17,7 +17,7 @@ export default function useBizRemove(
       }
       return removeTitle();
     }
-    return "删除选项";
+    return "是否删除选项";
   });
 
   async function beforeRemoveRef() {
@@ -29,7 +29,7 @@ export default function useBizRemove(
     if (getPropsRef.value.removeFunc) {
       if (typeof message === "string") {
         await createConfirmDel(
-          h("div", {}, [
+          h("div", [
             removedTitle.value,
             h(
               "span",

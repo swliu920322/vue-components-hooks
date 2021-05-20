@@ -46,16 +46,9 @@
           ...attrs,
           onCancel: unref(cancelFuncRef),
           onOk,
-          okButtonProps: {
-            /* eslint-disable */
-            ...(attrs.okButtonProps ? (attrs.okButtonProps as IObj) : {}),
-            loading: unref(okLoading),
-          },
-          cancelButtonProps: {
-            /* eslint-disable */
-            ...(attrs.cancelButtonProps ? (attrs.cancelButtonProps as IObj) : {}),
-            loading: unref(okLoading),
-          },
+          okButtonProps: attrs.okButtonProps,
+          cancelButtonProps: attrs.cancelButtonProps,
+          confirmLoading: unref(okLoading),
           ...unref(innerRef),
         };
       });

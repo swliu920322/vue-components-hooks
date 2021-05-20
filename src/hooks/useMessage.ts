@@ -3,6 +3,7 @@ import { h, VNodeTypes } from "vue";
 import { ArgsProps, ConfigProps } from "ant-design-vue/lib/notification";
 import { ModalFunc, ModalFuncProps } from "ant-design-vue/lib/modal/Modal";
 import { AoIcon } from "../components";
+import { ButtonType } from "ant-design-vue/es/button/buttonTypes";
 
 interface ConfirmOptions {
   info: ModalFunc;
@@ -116,6 +117,40 @@ export function useMessage() {
           title: title || "确认删除",
           content,
           okType: "danger",
+          onOk() {
+            resolve();
+          },
+        });
+      }),
+    createConfirmTitle: ({
+      category,
+      opeType = "删除",
+      names,
+      title = "确认操作",
+      okType = "danger",
+    }: {
+      category: string; // 删除类别
+      opeType: string; // 操作类型
+      names: string; // 删除名称
+      title?: string; // 删除标题
+      okType: ButtonType;
+    }) =>
+      new Promise<void>((resolve) => {
+        createConfirm({
+          iconType: "warning",
+          title: title,
+          content: h("div", [
+            "是否" + opeType + category + " ",
+            h(
+              "span",
+              {
+                style: { color: "red" },
+              },
+              names
+            ),
+            " 么",
+          ]),
+          okType,
           onOk() {
             resolve();
           },
