@@ -123,15 +123,11 @@ export function useMessage() {
         });
       }),
     createConfirmTitle: ({
-      category,
-      opeType = "删除",
-      names,
+      name,
       title = "确认操作",
       okType = "danger",
     }: {
-      category: string; // 删除类别
-      opeType: string; // 操作类型
-      names: string; // 删除名称
+      name: string; // 删除名称
       title?: string; // 删除标题
       okType: ButtonType;
     }) =>
@@ -140,13 +136,13 @@ export function useMessage() {
           iconType: "warning",
           title: title,
           content: h("div", [
-            "是否" + opeType + category + " ",
+            "是否" + title + " ",
             h(
               "span",
               {
                 style: { color: "red" },
               },
-              names
+              name
             ),
             " 么",
           ]),
