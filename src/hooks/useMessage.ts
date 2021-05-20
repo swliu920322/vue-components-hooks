@@ -129,7 +129,7 @@ export function useMessage() {
     }: {
       name: string; // 删除名称
       title?: string; // 删除标题
-      okType: ButtonType;
+      okType?: ButtonType;
     }) =>
       new Promise<void>((resolve) => {
         createConfirm({

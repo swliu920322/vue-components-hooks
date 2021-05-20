@@ -57,7 +57,7 @@ export default function useBizRemove(
       let message;
       const { removeLabelFunc, rowKey } = getPropsRef.value;
       if (removeLabelFunc) {
-        message = removeLabelFunc(record);
+        message = removeLabelFunc(record, false);
       } else {
         message = record.name;
       }
@@ -79,11 +79,12 @@ export default function useBizRemove(
         : tableMethods.getAllSelectedRowKeys();
       const rows = removeCurrent ? tableMethods.getSelectedRows() : tableMethods.getAllSelectedRows();
       if (idsList.length === 0) {
-        return createMessage.error("请先勾选需要删除选项的复选框");
+        createMessage.error(`请先勾选需要删除选项的复选框`);
+        return false;
       }
       let message;
       if (removeLabelFunc) {
-        message = rows.map(removeLabelFunc);
+        message = rows.map((i) => removeLabelFunc(i, true));
       } else {
         message = rows.map((i) => i.name);
       }

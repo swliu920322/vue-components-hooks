@@ -60,12 +60,16 @@
 
 ### 1.2.3 2021-5-19
 
-- 修复formModal title为函数的时候，新增保存的提示错误
+- 修复 formModal title 为函数的时候，新增保存的提示错误
 
 ### 1.2.3 2021-5-19
- 
+
 - 为删除确认统一格式
 
-### 1.2.6 2021-5-20
+### 1.2.7 2021-5-20
 
-- 修改loading为confirmLoading，统一confirm函数
+- 修改 loading 为 confirmLoading，统一 confirm 函数
+
+### 1.2.8 2021-5-20
+
+- 修复之前 bizTable 多选未删除会自动刷新的异常
