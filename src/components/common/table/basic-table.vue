@@ -128,20 +128,20 @@
 </script>
 
 <style scoped>
-  ::v-deep .ant-table .ant-table-thead > tr > th {
+  :deep( .ant-table .ant-table-thead > tr > th) {
     font-weight: 600;
     background: #ededed;
   }
-  ::v-deep .table-striped {
+  :deep( .table-striped) {
     background-color: #fafafa;
   }
-  ::v-deep .ant-table .ant-btn.ant-btn-link.icon-button {
+  :deep( .ant-table .ant-btn.ant-btn-link.icon-button) {
     padding: 0 0 0 8px;
     background: transparent;
     margin-right: 8px;
     height: 28px;
   }
-  ::v-deep .ant-btn.ant-btn-link + .ant-btn.ant-btn-link.icon-button::before {
+  :deep( .ant-btn.ant-btn-link + .ant-btn.ant-btn-link.icon-button::before) {
     height: 50%;
     content: "";
     background: transparent;
