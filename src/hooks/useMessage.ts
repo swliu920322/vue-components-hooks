@@ -120,6 +120,8 @@ export function useMessage() {
           onOk() {
             resolve();
           },
+          okText: "确认",
+          cancelText: "取消",
         });
       }),
     createConfirmTitle: ({
@@ -150,6 +152,8 @@ export function useMessage() {
           onOk() {
             resolve();
           },
+          okText: "确认",
+          cancelText: "取消",
         });
       }),
     createMessage: message,
