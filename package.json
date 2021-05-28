@@ -27,7 +27,7 @@
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "@purge-icons/generated": "^0.7.0",
-    "ant-design-vue": "^2.1.2",
+    "ant-design-vue": "2.1.2",
     "xlsx": "^0.16.9"
   },
   "devDependencies": {
