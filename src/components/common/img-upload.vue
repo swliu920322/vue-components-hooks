@@ -12,7 +12,7 @@
     <img v-if="imageUrl" class="img-view" :src="imageUrl" alt="avatar" />
     <div v-else>
       <PlusOutlined />
-      <div class="ant-upload-text">点击上传</div>
+      <div class="ant-upload-text">{{ text }}</div>
     </div>
   </a-upload>
 </template>
@@ -46,6 +46,12 @@
   export default defineComponent({
     name: "img-upload",
     components: { PlusOutlined },
+    props: {
+      text: {
+        type: String,
+        default: "点击上传",
+      },
+    },
     setup() {
       // 正要上传
       const hasUpload = ref<boolean>(false);
