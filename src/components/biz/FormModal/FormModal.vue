@@ -58,13 +58,13 @@
         }
       }
 
-      function openAddModal(param?: any) {
+      function openAddModal(...param: any[]) {
         const { openAddModal: openAdd } = getPropsRef.value;
-        openAdd && openAdd(param);
+        openAdd && openAdd(...param);
       }
-      function openEditModal(param: any) {
+      function openEditModal(...param: any[]) {
         const { openEditModal: openE } = getPropsRef.value;
-        openE && openE(param);
+        openE && openE(...param);
       }
 
       const regFormModal: IFormModalActions = {

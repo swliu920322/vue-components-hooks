@@ -24,9 +24,9 @@ export interface IFormModalProp extends IModalProps, IFormProps {
   // 标题，string则 新增 + string, 修改 + string, 方法则返回你定义的
   title: string | ((isAdd: boolean, model: Record<string, any>) => string);
   // 打开新增model
-  openAddModal: (record?: any) => void;
+  openAddModal: (...record: any[]) => void;
   // 打开修改model
-  openEditModal: (record: any) => void;
+  openEditModal: (...record: any[]) => void;
   afterAdd: (model: Record<string, any>, res: any) => Promise<any>;
   afterEdit: (model: Record<string, any>, res: any) => Promise<any>;
   // 重新查询的方法，如果传入，自动新增和修改结束后会调用
@@ -44,9 +44,9 @@ export interface IFormModalActions extends ICommonAction<IFormModalProp> {
   // 获取modelRef，实时更新
   getModelRef: () => ComputedRef<Record<string, any>>;
   // 手动触发传入的openAddModal
-  openAddModal: (record?: any) => void;
-  // 手动触发传入的openEditModal
-  openEditModal: (param: any) => void;
+  openAddModal: (...record: any[]) => void;
+  // 打开修改model
+  openEditModal: (...record: any[]) => void;
 
   modal: IModalActionBase;
   form: IFormActionsBase;

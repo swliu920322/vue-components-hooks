@@ -26,8 +26,8 @@ export default function useFormModal(
     setProps: (props) => getFormModalInstance().setProps(props),
     setModel: (val) => getFormModalInstance().setModel(val),
     getModelRef: () => getFormModalInstance().getModelRef(),
-    openAddModal: (param) => getFormModalInstance().openAddModal(param),
-    openEditModal: (param) => getFormModalInstance().openEditModal(param),
+    openAddModal: (...param) => getFormModalInstance().openAddModal(...param),
+    openEditModal: (...param) => getFormModalInstance().openEditModal(...param),
     modal: getModalMethods(() => getFormModalInstance().modal),
     form: getFormMethods(() => getFormModalInstance().form),
   };
