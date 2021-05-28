@@ -9,15 +9,11 @@
 </template>
 
 <script lang="ts">
+  import { useForm, BasicForm } from "@/components/common/form";
+  import { BasicModal } from "@/components/common/modal";
+  import { useModal } from "@/components/common/modal";
   import { computed, defineComponent, nextTick, reactive, ref } from "vue";
-  import {
-    BasicModal,
-    useModal,
-    BasicForm,
-    useForm,
-    IFormModalActions,
-    IFormModalProp,
-  } from "../../../components";
+  import { IFormModalActions, IFormModalProp } from "./formModal.type";
   import { useModalFunc, useModalOpen } from "./hooks";
 
   export default defineComponent({

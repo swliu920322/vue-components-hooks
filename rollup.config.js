@@ -14,5 +14,5 @@ export default {
     },
   ],
   external: ["ant-design-vue", "vue", "xlsx", "@purge-icons/generated", "@ant-design/icons-vue"],
-  plugins: [typescript(), css(), vue({ css: false }), nodeResolve(), commonjs()],
+  plugins: [typescript(), vue({ css: false }), css(), nodeResolve(), commonjs()],
 };

@@ -13,9 +13,10 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from "vue";
-  import { BasicTable, useTable, IBizTableActions, IBizTableProps } from "../../../components";
   import { useBizData, useBizRemove } from "./hooks";
   import { BizTableProps } from "./bizTable.props";
+  import { IBizTableActions, IBizTableProps } from "./bizTable.type";
+  import { useTable, BasicTable } from "@/components/common/table";
 
   export default defineComponent({
     name: "bizTable",
