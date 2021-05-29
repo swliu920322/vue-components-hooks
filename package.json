@@ -6,10 +6,6 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
-  "author": {
-    "email": "1064084779@qq.com",
-    "name": "liushengwei"
-  },
   "main": "lib/index.js",
   "types": "src/components/index.d.ts",
   "dependencies": {
