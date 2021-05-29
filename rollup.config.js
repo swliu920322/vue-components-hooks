@@ -8,11 +8,14 @@ export default {
   input: "src/components/index.ts",
   output: [
     {
-      dir: "lib",
+      format: "es",
+      file: "lib/index.es.js",
+    },
+    {
       format: "cjs",
-      exports: "named",
+      file: "lib/index.js",
     },
   ],
   external: ["ant-design-vue", "vue", "xlsx", "@purge-icons/generated", "@ant-design/icons-vue"],
-  plugins: [typescript(), vue({ css: false }), css(), nodeResolve(), commonjs()],
+  plugins: [nodeResolve(), typescript(), vue({ css: false }), css({ output: "bundle.css" }), commonjs()],
 };
