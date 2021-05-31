@@ -128,29 +128,36 @@ export function useMessage() {
       name,
       title = "确认操作",
       okType = "danger",
+      content,
     }: {
-      name: string; // 删除名称
-      title?: string; // 删除标题
-      okType?: ButtonType;
+      name?: string; // 名称
+      title?: string; // 标题
+      content?: string; // 内容, 没内容 = 是否 + 标题 + name
+      okType?: ButtonType; // 按钮类型
     }) =>
-      new Promise<void>((resolve) => {
+      new Promise<void>((resolve, reject) => {
         createConfirm({
           iconType: "warning",
           title: title,
-          content: h("div", [
-            "是否" + title + " ",
-            h(
-              "span",
-              {
-                style: { color: "red" },
-              },
-              name
-            ),
-            " 么",
-          ]),
+          content:
+            content ??
+            h("div", [
+              "是否" + title + " ",
+              h(
+                "span",
+                {
+                  style: { color: "red" },
+                },
+                name
+              ),
+              " 么",
+            ]),
           okType,
           onOk() {
             resolve();
+          },
+          onCancel() {
+            reject();
           },
           okText: "确认",
           cancelText: "取消",

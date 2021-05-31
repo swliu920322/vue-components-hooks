@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "scripts": {
     "build": "rollup -c",
+    "buildW": "rollup -c -w",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "push": "git  push origin --all"
@@ -13,6 +14,10 @@
   "dependencies": {
     "xlsx": "^0.17.0"
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "devDependencies": {
     "@purge-icons/generated": "^0.7.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
