@@ -6,7 +6,8 @@
     "buildW": "rollup -c -w",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "push": "git  push origin --all"
+    "push": "git  push origin --all",
+    "clear": "rimraf lib"
   },
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -14,10 +15,6 @@
   "dependencies": {
     "xlsx": "^0.17.0"
   },
-  "files": [
-    "lib",
-    "src"
-  ],
   "devDependencies": {
     "@purge-icons/generated": "^0.7.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
@@ -40,6 +37,7 @@
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "rollup": "^2.45.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-css-only": "^3.1.0",

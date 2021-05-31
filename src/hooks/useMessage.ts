@@ -2,7 +2,7 @@ import { message, Modal, notification } from "ant-design-vue";
 import { h, VNodeTypes } from "vue";
 import { ArgsProps, ConfigProps } from "ant-design-vue/lib/notification";
 import { ModalFunc, ModalFuncProps } from "ant-design-vue/lib/modal/Modal";
-import { AoIcon } from "../components";
+import AoIcon from "../components/common/Icon.vue";
 import { ButtonType } from "ant-design-vue/es/button/buttonTypes";
 
 interface ConfirmOptions {
