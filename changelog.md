@@ -77,3 +77,6 @@
 ### 1.3.0 2021-5-28
 
 - 为formModal的addModal和editModal批量传递参数增加了处理
+
+### 1.3.1 2021-6-4
+- 修复多选删除之后，selectRows仍然存在的问题

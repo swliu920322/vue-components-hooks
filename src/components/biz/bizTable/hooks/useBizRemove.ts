@@ -89,6 +89,7 @@ export default function useBizRemove(
         message = rows.map((i) => i.name);
       }
       await removeFunc(message.join(" , "), idsList);
+      tableMethods.clearSelectedRowKeys();
       return true;
     }
     return false;

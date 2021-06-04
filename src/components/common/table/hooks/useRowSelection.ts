@@ -52,6 +52,7 @@ export default function useRowSelection(
   function clearSelectedRowKeys() {
     selectedRowsRef.value = [];
     selectedRowKeysRef.value = [];
+    selectedRowsAllRef.value = [];
   }
   return {
     getAllSelectedRows: () => unref(Object.values(selectedRowsAllRef)),
