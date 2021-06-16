@@ -14,16 +14,6 @@
     max-height: 86px;
 }
 
-.ant-btn.ant-btn-link + .ant-btn.ant-btn-link.icon-button[data-v-452c1df2]::before {
-    height: 50%;
-    content: "";
-    background: transparent;
-    border-radius: 0;
-    display: inline-block;
-    margin: auto;
-    border-left: 1px solid #606266;
-}
-
 .app-iconify[data-v-484571dd] {
     display: inline-block;
     vertical-align: middle;
