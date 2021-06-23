@@ -51,13 +51,17 @@
         type: String,
         default: "点击上传",
       },
+      url: {
+        type: String,
+        default: "",
+      },
     },
-    setup() {
+    setup(props) {
       // 正要上传
       const hasUpload = ref<boolean>(false);
 
       const fileList = ref<any[]>([]);
-      const imageUrl = ref<string>("");
+      const imageUrl = ref<string>(props.url ?? "");
       const imageBuffer = ref<ArrayBuffer>();
 
       function get_image(arr_buffer: ArrayBuffer) {
