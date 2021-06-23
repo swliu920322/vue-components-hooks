@@ -98,6 +98,12 @@
         hasUpload.value = false;
       }
 
+      function setImgPathSite(path?: string) {
+        imageUrl.value = path ?? "";
+        fileList.value = [];
+        hasUpload.value = false;
+      }
+
       function upload() {
         if (!hasUpload.value || fileList.value.length === 0) {
           return "";
@@ -114,6 +120,7 @@
         beforeUpload,
         handleChange,
         setImgPath,
+        setImgPathSite,
         upload,
       };
     },
