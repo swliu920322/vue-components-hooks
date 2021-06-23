@@ -10,7 +10,7 @@
     @change="handleChange"
   >
     <a-button>
-      <upload-outlined></upload-outlined>
+      <UploadOutlined />
       <span class="ant-upload-text">上传</span>
     </a-button>
   </a-upload>
@@ -19,6 +19,7 @@
 <script lang="ts">
   import { importFile } from "../../utils/xlsx";
   import { useMessage } from "../../hooks/useMessage";
+  import { UploadOutlined } from "@ant-design/icons-vue";
   interface FileItem {
     uid: string;
     name?: string;
@@ -37,6 +38,7 @@
 
   export default defineComponent({
     name: "file-upload",
+    components: { UploadOutlined },
     setup() {
       const fileList = ref<FileItem[]>([]);
       const { createMessage } = useMessage();
