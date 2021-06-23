@@ -1,4 +1,9 @@
 
+.img-view[data-v-689c368f] {
+    max-width: 100%;
+    max-height: 86px;
+}
+
 .ant-btn.ant-btn-link + .ant-btn.ant-btn-link.icon-button[data-v-452c1df2]::before {
     height: 50%;
     content: "";
@@ -7,11 +12,6 @@
     display: inline-block;
     margin: auto;
     border-left: 1px solid #606266;
-}
-
-.img-view[data-v-689c368f] {
-    max-width: 100%;
-    max-height: 86px;
 }
 
 .app-iconify[data-v-484571dd] {
