@@ -5,10 +5,11 @@ import {
   IModalActionBase,
   IFormActionsBase,
 } from "../../../components";
-import { ComputedRef } from "vue";
+import { ComputedRef, UnwrapRef } from "vue";
 import { IObj } from "../../../types";
 
 export interface IFormModalProp extends IModalProps, IFormProps {
+  modelRef: UnwrapRef<Record<string, any>>;
   // 初始值
   initModel: IObj | ((...args: any[]) => IObj);
   // 保存前的转化，以下转化都是差量修改,只要返回变化的内容即可,全部返回也没什么事

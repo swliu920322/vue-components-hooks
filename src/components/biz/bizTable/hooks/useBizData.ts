@@ -1,4 +1,4 @@
-import { computed, ComputedRef, onMounted, ref, unref } from "vue";
+import { computed, ComputedRef, onMounted, Ref, ref, unref } from "vue";
 import { IPagination, IBizTableProps, IBasicTableActions } from "../../../../components";
 
 export default function useBizData(
@@ -17,7 +17,14 @@ export default function useBizData(
       if (obj?.pageSize) {
         page.pageSize = obj.pageSize;
       }
-      const { queryFunc, queryFuncMap, querySideEffect, resultConfigMap } = unref(getPropsRef);
+      const {
+        queryFunc,
+        queryFuncMap,
+        querySideEffect,
+        resultConfigMap,
+        dataSourceRef,
+        paginationRef,
+      } = unref(getPropsRef);
       if (queryFunc) {
         const res: any = await queryFunc({
           pageRequest: {
@@ -36,6 +43,12 @@ export default function useBizData(
         }
         const { total, data } = resultConfigMap(res);
         dataSource.value = queryFuncMap ? data.map(queryFuncMap) : data;
+        if (dataSourceRef) {
+          dataSourceRef.value = dataSource.value;
+        }
+        if (paginationRef) {
+          paginationRef.value = page;
+        }
         if (querySideEffect && typeof querySideEffect === "function") {
           querySideEffect(computed(() => dataSource.value).value);
         }
@@ -50,7 +63,6 @@ export default function useBizData(
       tableMethods.setLoading(false);
     }
   }
-
   async function rePageChange() {
     await pageChange({ current: 1 });
   }

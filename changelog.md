@@ -76,14 +76,17 @@
 
 ### 1.3.0 2021-5-28
 
-- 为formModal的addModal和editModal批量传递参数增加了处理
+- 为 formModal 的 addModal 和 editModal 批量传递参数增加了处理
 
 ### 1.3.1 2021-6-4
-- 修复多选删除之后，selectRows仍然存在的问题
+
+- 修复多选删除之后，selectRows 仍然存在的问题
 
 ### 1.3.1 2021-6-23
-- 为图片上传增加默认的url的props参数
 
+- 为图片上传增加默认的 url 的 props 参数
 
 ### 1.3.1 2021-6-24
-- 为基础table增加paginationRef
+
+- 为基础 table 增加 paginationRef
+- 增加 bizTable 的 dataSourceRef 和 paginationRef,可以单向追踪数据源变化和分页变化增加 formModal 的 modelRef 可以单向追踪内部 model 变化

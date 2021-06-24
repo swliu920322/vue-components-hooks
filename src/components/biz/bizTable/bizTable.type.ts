@@ -3,7 +3,7 @@ import {
   IBasicTableProps,
   ICommonAction,
 } from "../../../components/common/table/basic-table.types";
-import { ComputedRef, VNodeTypes } from "vue";
+import { ComputedRef, Ref, VNodeTypes } from "vue";
 interface PageRequest {
   page: number;
   pageSize: number;
@@ -13,6 +13,8 @@ interface OrderRequest {
   descending: boolean;
 }
 export interface IBizTableProps extends IBasicTableProps {
+  dataSourceRef: Ref<any[]>;
+  paginationRef: Ref<any>;
   // 查询的api服务，只能填查询请求
   queryFunc: (i: { pageRequest: PageRequest; orderRequest: OrderRequest }) => Promise<any>;
   // 查询后对返回值每一项的map转换
