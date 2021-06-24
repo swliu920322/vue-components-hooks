@@ -4,6 +4,7 @@ import { ref } from "vue";
 export const getTableMethods = (getInstance: () => any): Omit<IBasicTableActions, "setProps"> => ({
   setPagination: (pagination) => getInstance()?.setPagination(pagination),
   getPagination: () => getInstance()?.getPagination(),
+  getPaginationRef: () => getInstance()?.getPaginationRef(),
   getDataSource: () => getInstance()?.getDataSource(),
   setDataSource: (val) => getInstance()?.setDataSource(val),
   setLoading: (val) => getInstance()?.setLoading(val),

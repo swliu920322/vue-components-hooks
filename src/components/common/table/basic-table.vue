@@ -111,6 +111,7 @@
         setPagination,
         setLoading,
         getPagination: () => unref(getPaginationRef),
+        getPaginationRef: () => computed(() => getPaginationRef.value),
         getSelectedRowKeys,
         getSelectedRows,
         getAllSelectedRows,

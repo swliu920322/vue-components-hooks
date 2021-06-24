@@ -1,6 +1,6 @@
 import { ColumnProps, tableRowSelection } from "ant-design-vue/lib/table/interface";
 import { IPagination } from "../../../components";
-import { ExtractPropTypes } from "vue";
+import { ComputedRef, ExtractPropTypes } from "vue";
 import { IObj } from "../../../types";
 export type SizeType = "default" | "middle" | "small" | "large";
 export interface IBasicColumn extends ColumnProps {
@@ -68,6 +68,7 @@ export interface IBasicTableActionBase {
   setPagination: (pagination: Partial<IPagination> | boolean) => void;
   // 获取分页
   getPagination: () => IPagination | boolean;
+  getPaginationRef: () => ComputedRef<IPagination | boolean>;
   // 获取数据源
   getDataSource: () => any[];
   // 设置数据源
