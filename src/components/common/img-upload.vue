@@ -118,6 +118,22 @@
         // const res = await FileService.uploadFile(formDate);
         // return res[0];
       }
+      function uploadContent() {
+        if (!hasUpload.value || fileList.value.length === 0) {
+          return;
+        }
+
+        return {
+          fileInfo: {
+            url: "",
+            fid: "",
+            name: fileList.value[0].name,
+            size: fileList.value[0].size,
+          },
+          content: new Uint8Array(imageBuffer.value as ArrayBuffer),
+        };
+      }
+
       return {
         fileList,
         imageUrl,
@@ -126,6 +142,7 @@
         setImgPath,
         setImgPathSite,
         upload,
+        uploadContent,
       };
     },
   });
