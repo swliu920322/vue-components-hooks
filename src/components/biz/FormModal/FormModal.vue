@@ -11,7 +11,7 @@
 <script lang="ts">
   import { useForm, BasicForm } from "@/components/common/form";
   import { useModal, BasicModal } from "@/components/common/modal";
-  import { computed, defineComponent, nextTick, reactive, ref, watch } from "vue";
+  import { computed, defineComponent, nextTick, reactive, ref, toRef, watch } from "vue";
   import { IFormModalActions, IFormModalProp } from "./formModal.type";
 
   import { useModalFunc, useModalOpen } from "./hooks";
@@ -23,10 +23,17 @@
     setup(props, { emit }) {
       const model = reactive<Record<string, any>>({});
 
-      const innerRef = ref<Partial<IFormModalProp>>();
+      const innerRef = ref<Partial<IFormModalProp>>({});
 
       const getPropsRef = computed(() => {
-        return { ...props, ...innerRef.value } as Partial<IFormModalProp>;
+        const temp = {
+          ...props,
+          ...innerRef.value,
+        };
+        if (innerRef.value.modelRef) {
+          temp.modelRef = toRef(innerRef.value, "modelRef");
+        }
+        return temp as Partial<IFormModalProp>;
       });
 
       watch(

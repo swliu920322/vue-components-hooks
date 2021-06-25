@@ -86,7 +86,10 @@
 
 - 为图片上传增加默认的 url 的 props 参数
 
-### 1.3.1 2021-6-24
+### 1.3.1 2021-6-24 v0.2.5
 
 - 为基础 table 增加 paginationRef
 - 增加 bizTable 的 dataSourceRef 和 paginationRef,可以单向追踪数据源变化和分页变化增加 formModal 的 modelRef 可以单向追踪内部 model 变化
+
+### 1.3.1 2021-6-25  v0.2.6
+- 修改dataSourceRef, paginationRef, modelRef, 处理内部处理的响应式

@@ -118,6 +118,7 @@
         getAllSelectedRowKeys,
         setSelectedRowKeys,
         clearSelectedRowKeys,
+        getScrollHeight,
       };
       emit("register", actions);
       emit("registerEnd");

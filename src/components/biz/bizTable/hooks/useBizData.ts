@@ -1,4 +1,4 @@
-import { computed, ComputedRef, onMounted, Ref, ref, unref } from "vue";
+import { computed, ComputedRef, onMounted, ref, unref } from "vue";
 import { IPagination, IBizTableProps, IBasicTableActions } from "../../../../components";
 
 export default function useBizData(
@@ -11,12 +11,8 @@ export default function useBizData(
     tableMethods.setLoading(true);
     try {
       const page = tableMethods.getPagination() as IPagination;
-      if (obj?.current) {
-        page.current = obj.current;
-      }
-      if (obj?.pageSize) {
-        page.pageSize = obj.pageSize;
-      }
+      page.current = obj?.current || page.current;
+      page.pageSize = obj?.pageSize || page.pageSize;
       const {
         queryFunc,
         queryFuncMap,
@@ -27,33 +23,27 @@ export default function useBizData(
       } = unref(getPropsRef);
       if (queryFunc) {
         const res: any = await queryFunc({
-          pageRequest: {
-            page: page.current,
-            pageSize: page.pageSize,
-          },
-          orderRequest: {
-            orderBy: "",
-            descending: false,
-          },
+          pageRequest: { page: page.current, pageSize: page.pageSize },
+          orderRequest: { orderBy: "", descending: false },
         });
         // resultConfigMap undefined,直接返回值，不分页
         if (resultConfigMap === undefined) {
-          dataSource.value = res;
-          return;
+          return (dataSource.value = res);
         }
         const { total, data } = resultConfigMap(res);
         dataSource.value = queryFuncMap ? data.map(queryFuncMap) : data;
         if (dataSourceRef) {
           dataSourceRef.value = dataSource.value;
         }
-        if (paginationRef) {
-          paginationRef.value = page;
-        }
+
         if (querySideEffect && typeof querySideEffect === "function") {
           querySideEffect(computed(() => dataSource.value).value);
         }
 
         tableMethods.setPagination({ ...page, total });
+        if (paginationRef) {
+          paginationRef.value = { ...page, total };
+        }
         tableMethods.setLoading(false);
       } else {
         tableMethods.setLoading(false);

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, ref, unref, watch } from "vue";
+  import { computed, defineComponent, ref, unref, watch, toRef } from "vue";
   import { useBizData, useBizRemove } from "./hooks";
   import { BizTableProps } from "./bizTable.props";
   import { IBizTableActions, IBizTableProps } from "./bizTable.type";
@@ -26,10 +26,17 @@
     setup(props, { emit }) {
       const innerRef = ref<Partial<IBizTableProps>>({});
       const getPropsRef = computed(() => {
-        return {
+        const temp = {
           ...props,
           ...innerRef.value,
-        } as Partial<IBizTableProps>;
+        };
+        if (innerRef.value.dataSourceRef) {
+          temp.dataSourceRef = toRef(innerRef.value, "dataSourceRef");
+        }
+        if (innerRef.value.paginationRef) {
+          temp.paginationRef = toRef(innerRef.value, "paginationRef");
+        }
+        return temp as Partial<IBizTableProps>;
       });
 
       const [register, tableMethods] = useTable(getPropsRef.value);
