@@ -17,6 +17,7 @@
   import { BizTableProps } from "./bizTable.props";
   import { IBizTableActions, IBizTableProps } from "./bizTable.type";
   import { useTable, BasicTable } from "@/components/common/table";
+  import { IPagination } from "../../../components";
 
   export default defineComponent({
     name: "bizTable",
@@ -45,7 +46,7 @@
         watch(
           () => unref(getPropsRef),
           (val) => {
-            tableMethods.setProps(val);
+            tableMethods.setProps({ ...val, pagination: tableMethods.getPagination() as IPagination });
           },
           {
             immediate: true,
