@@ -64,7 +64,7 @@
       const { removeItem, removeItemAuto, removeItems, removeItemsAuto } = useBizRemove(
         getPropsRef,
         tableMethods,
-        rePageChange
+        pageChange
       );
       const IBizTableAction: IBizTableActions = {
         setProps,

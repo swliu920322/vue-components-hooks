@@ -11,7 +11,7 @@
 <script lang="ts">
   import { useForm, BasicForm } from "@/components/common/form";
   import { useModal, BasicModal } from "@/components/common/modal";
-  import { computed, defineComponent, nextTick, reactive, ref, toRef, watch } from "vue";
+  import { computed, defineComponent, nextTick, reactive, ref, toRef, watch, watchEffect } from "vue";
   import { IFormModalActions, IFormModalProp } from "./formModal.type";
 
   import { useModalFunc, useModalOpen } from "./hooks";

@@ -5,7 +5,7 @@ import { useMessage } from "../../../../hooks/useMessage";
 export default function useBizRemove(
   getPropsRef: ComputedRef<Partial<IBizTableProps>>,
   tableMethods: IBasicTableActions,
-  rePageChange: () => Promise<void>
+  pageChange: () => Promise<void>
 ) {
   const { createConfirmDel, createMessage } = useMessage();
 
@@ -68,7 +68,7 @@ export default function useBizRemove(
   }
   async function removeItemAuto(record: any) {
     const requested = await removeItem(record);
-    requested && (await rePageChange());
+    requested && (await pageChange());
   }
 
   async function removeItems(): Promise<boolean> {
@@ -96,7 +96,7 @@ export default function useBizRemove(
   }
   async function removeItemsAuto() {
     const requested = await removeItems();
-    requested && (await rePageChange());
+    requested && (await pageChange());
   }
   return {
     removeItem,

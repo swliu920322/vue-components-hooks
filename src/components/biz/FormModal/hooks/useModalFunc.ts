@@ -43,9 +43,13 @@ export default function useModalFunc(
           const res = await onAdd(model);
           if (afterAdd) {
             await afterAdd(model, res);
-          } else if (commonMap || addMap) {
+          } else {
             sucMsg("新增");
-            rePageChange && (await rePageChange());
+            if (rePageChange) {
+              await rePageChange();
+            } else if (pageChange) {
+              await pageChange({ pageSize: 1 });
+            }
           }
         }
         if (onEdit && model.id !== undefined) {
@@ -53,7 +57,7 @@ export default function useModalFunc(
           const res = await onEdit(model);
           if (afterEdit) {
             await afterEdit(model, res);
-          } else if (commonMap || editMap) {
+          } else {
             sucMsg("修改");
             pageChange && (await pageChange());
           }

@@ -91,5 +91,11 @@
 - 为基础 table 增加 paginationRef
 - 增加 bizTable 的 dataSourceRef 和 paginationRef,可以单向追踪数据源变化和分页变化增加 formModal 的 modelRef 可以单向追踪内部 model 变化
 
-### 1.3.1 2021-6-25  v0.2.6
-- 修改dataSourceRef, paginationRef, modelRef, 处理内部处理的响应式
+### 1.3.1 2021-6-25 v0.2.6
+
+- 修改 dataSourceRef, paginationRef, modelRef, 处理内部处理的响应式
+
+### 1.3.1 2021-7-8 v0.2.7
+
+- 修改 model 的 setModal，属性替换改为深拷贝，移除 commonMap 和 addMap，editMap 不存在时不自动 pageChange 的问题,
+简化了pageChange的传入，rePageChange可以不传

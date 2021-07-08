@@ -1,6 +1,7 @@
 import { computed, ComputedRef, ref, unref, UnwrapRef, watch } from "vue";
 import { IObj } from "../../../../types";
 import { IFormActions, IFormModalProp, IModalActions } from "../../../../components";
+import { deepClone } from "../../../../utils";
 
 export default function useModalOpen(
   getPropsRef: ComputedRef<Partial<IFormModalProp>>,
@@ -10,11 +11,7 @@ export default function useModalOpen(
 ) {
   const isAddRef = ref<boolean>(false);
   function setModel(val: Record<string, any>) {
-    Object.entries(val).forEach(([key, value]) => {
-      if (model[key] !== value) {
-        model[key] = value;
-      }
-    });
+    Object.assign(model, val);
   }
 
   async function openFunc() {
@@ -28,13 +25,13 @@ export default function useModalOpen(
     isAddRef.value = true;
     model.id = undefined;
     if (initial) {
-      setModel(initial);
+      setModel(deepClone(initial));
     }
   }
   async function openEdit(initial: IObj) {
     await openFunc();
     isAddRef.value = false;
-    setModel(initial);
+    setModel(deepClone(initial));
   }
 
   watch(
@@ -42,7 +39,7 @@ export default function useModalOpen(
     (val) => {
       if (val) {
         const res: IObj = typeof val === "object" ? val : val();
-        setModel(res);
+        setModel(deepClone(res));
       }
     }
   );
