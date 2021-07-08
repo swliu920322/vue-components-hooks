@@ -99,3 +99,6 @@
 
 - 修改 model 的 setModal，属性替换改为深拷贝，移除 commonMap 和 addMap，editMap 不存在时不自动 pageChange 的问题,
 简化了pageChange的传入，rePageChange可以不传
+
+### 1.3.1 2021-7-8 v0.2.8
+- 由于moment()的值会被拷贝出问题，setModal深拷贝换成lodash-es的深拷贝，

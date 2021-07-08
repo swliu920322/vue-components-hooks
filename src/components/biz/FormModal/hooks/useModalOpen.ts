@@ -1,8 +1,7 @@
 import { computed, ComputedRef, ref, unref, UnwrapRef, watch } from "vue";
 import { IObj } from "../../../../types";
 import { IFormActions, IFormModalProp, IModalActions } from "../../../../components";
-import { deepClone } from "../../../../utils";
-
+import { cloneDeep } from "lodash-es";
 export default function useModalOpen(
   getPropsRef: ComputedRef<Partial<IFormModalProp>>,
   methods: IFormActions,
@@ -25,13 +24,13 @@ export default function useModalOpen(
     isAddRef.value = true;
     model.id = undefined;
     if (initial) {
-      setModel(deepClone(initial));
+      setModel(cloneDeep(initial));
     }
   }
   async function openEdit(initial: IObj) {
     await openFunc();
     isAddRef.value = false;
-    setModel(deepClone(initial));
+    setModel(cloneDeep(initial));
   }
 
   watch(
@@ -39,7 +38,7 @@ export default function useModalOpen(
     (val) => {
       if (val) {
         const res: IObj = typeof val === "object" ? val : val();
-        setModel(deepClone(res));
+        setModel(cloneDeep(res));
       }
     }
   );
