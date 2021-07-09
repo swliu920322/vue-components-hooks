@@ -1,6 +1,6 @@
 {
   "name": "vue-components-hooks",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "scripts": {
     "build": "rollup -c",
     "buildW": "rollup -c -w",
