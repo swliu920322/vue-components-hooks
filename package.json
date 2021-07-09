@@ -12,14 +12,11 @@
   "main": "lib/index.js",
   "module": "lib/index.es.js",
   "types": "src/components/index.d.ts",
-  "dependencies": {
-    "@types/lodash-es": "^4.17.4",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "moment": "^2.29.1",
-    "xlsx": "^0.17.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "xlsx": "^0.17.0",
+    "@types/lodash-es": "^4.17.4",
+    "lodash-es": "^4.17.21",
     "@purge-icons/generated": "^0.7.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@typescript-eslint/eslint-plugin": "^4.18.0",

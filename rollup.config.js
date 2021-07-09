@@ -16,6 +16,6 @@ export default {
       file: "lib/index.js",
     },
   ],
-  external: ["ant-design-vue", "vue", "xlsx", "@purge-icons/generated", "@ant-design/icons-vue"],
+  external: ["ant-design-vue", "vue", "xlsx", "lodash-es", "@purge-icons/generated", "@ant-design/icons-vue"],
   plugins: [nodeResolve(), typescript(), vue({ css: false }), css({ output: "bundle.css" }), commonjs()],
 };
