@@ -46,7 +46,7 @@
         watch(
           () => unref(getPropsRef),
           (val) => {
-            tableMethods.setProps({ ...val, pagination: tableMethods.getPagination() as IPagination });
+            tableMethods.setProps({ pagination: tableMethods.getPagination() as IPagination, ...val });
           },
           {
             immediate: true,

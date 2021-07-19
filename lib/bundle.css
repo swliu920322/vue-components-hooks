@@ -9,6 +9,11 @@
     border-left: 1px solid #606266;
 }
 
+.img-view[data-v-689c368f] {
+    max-width: 100%;
+    max-height: 86px;
+}
+
 .app-iconify[data-v-484571dd] {
     display: inline-block;
     vertical-align: middle;
@@ -30,11 +35,6 @@
   /*  border-radius: 100%; */
 
   /* } */
-
-.img-view[data-v-689c368f] {
-    max-width: 100%;
-    max-height: 86px;
-}
 
 [data-v-33b94c9a] .ant-table .ant-table-thead > tr > th {
     font-weight: 600;
