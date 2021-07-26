@@ -1,4 +1,4 @@
-import { computed, ComputedRef, ref, unref, watch } from "vue";
+import { computed, ComputedRef, onUnmounted, ref, unref, watch } from "vue";
 import { IBasicColumn, IBasicTableProps } from "../basic-table.types";
 import { IPagination } from "../../pagination/usePagination";
 
@@ -7,22 +7,27 @@ export default function useColumns(
   getPaginationRef: ComputedRef<IPagination | boolean>
 ) {
   const columnsRef = ref<IBasicColumn[]>(propsRef.value.columns || []);
-  watch(
-    () => unref(propsRef).columns,
-    (val) => {
-      if (val) {
-        if (unref(propsRef).columnsAlign) {
-          // @ts-ignore
-          columnsRef.value = val.map((i) => ({
-            ...i,
-            align: i.align || unref(propsRef).columnsAlign,
-          }));
-        } else {
-          columnsRef.value = val;
-        }
+
+  function columnsChange(columns?: IBasicColumn[]) {
+    if (columns && Array.isArray(columns)) {
+      if (unref(propsRef).columnsAlign) {
+        // @ts-ignore
+        columnsRef.value = val.map((i) => ({
+          ...i,
+          align: i.align || unref(propsRef).columnsAlign,
+        }));
+      } else {
+        // @ts-ignore
+        columnsRef.value = columns;
       }
     }
-  );
+  }
+  const watchStop = watch(() => unref(propsRef).columns, columnsChange);
+
+  onUnmounted(() => {
+    watchStop && watchStop();
+  });
+
   const getColumnRef = computed(() => {
     const getPagination = unref(getPaginationRef);
     const columns = columnsRef.value;
@@ -53,5 +58,7 @@ export default function useColumns(
   });
   return {
     getColumnRef,
+    getColumns: () => getColumnRef.value,
+    setColumns: columnsChange,
   };
 }

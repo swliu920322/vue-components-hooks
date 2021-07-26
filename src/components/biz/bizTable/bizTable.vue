@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, ref, unref, watch, toRef } from "vue";
+  import { computed, defineComponent, ref, unref, watch, toRef, onUnmounted } from "vue";
   import { useBizData, useBizRemove } from "./hooks";
   import { BizTableProps } from "./bizTable.props";
   import { IBizTableActions, IBizTableProps } from "./bizTable.type";
@@ -43,7 +43,7 @@
       const [register, tableMethods] = useTable(getPropsRef.value);
 
       function registerEnd() {
-        watch(
+        const watchStop = watch(
           () => unref(getPropsRef),
           (val) => {
             tableMethods.setProps({ pagination: tableMethods.getPagination() as IPagination, ...val });
@@ -52,6 +52,9 @@
             immediate: true,
           }
         );
+        onUnmounted(() => {
+          watchStop && watchStop();
+        });
       }
 
       function setProps(val: Partial<IBizTableProps>) {

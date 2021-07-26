@@ -4,7 +4,17 @@
 
 <script lang="ts">
   import Iconify from "@purge-icons/generated";
-  import { computed, defineComponent, CSSProperties, watch, ref, unref, nextTick, onMounted } from "vue";
+  import {
+    computed,
+    defineComponent,
+    CSSProperties,
+    watch,
+    ref,
+    unref,
+    nextTick,
+    onMounted,
+    onUnmounted,
+  } from "vue";
 
   export default defineComponent({
     name: "AoIcon",
@@ -61,7 +71,10 @@
           }
         }
       };
-      watch(() => props.icon, update, { flush: "post" });
+      const watchStop = watch(() => props.icon, update, { flush: "post" });
+      onUnmounted(() => {
+        watchStop && watchStop();
+      });
       onMounted(update);
       return {
         elRef,

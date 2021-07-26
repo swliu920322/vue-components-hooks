@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from "vue";
+  import { computed, defineComponent, nextTick, onMounted, onUnmounted, ref, unref, watch } from "vue";
   import { useLoading } from "../loading/useLoading";
   import { usePagination } from "../pagination/usePagination";
   import { basicTableProps } from "./basic-table.props";
@@ -40,12 +40,12 @@
         }
         innerRef.value = { ...innerRef.value, ...props };
       }
-      const { getColumnRef } = useColumns(getPropsRef, getPaginationRef);
+      const { getColumnRef, setColumns, getColumns } = useColumns(getPropsRef, getPaginationRef);
 
       const { getRowClassName } = useTableStyle(getPropsRef);
 
       const { getDataSourceRef, setDataSource } = useDataSource(getPropsRef);
-      watch(
+      const watchStopDataSource = watch(
         () => unref(getPropsRef).dataSource,
         (val) => {
           if (val) {
@@ -56,6 +56,9 @@
           }
         }
       );
+      onUnmounted(() => {
+        watchStopDataSource && watchStopDataSource();
+      });
       const {
         getRowSelectionRef,
         setSelectedRowKeys,
@@ -90,9 +93,10 @@
           loading: (attrs.loading ?? false) || unref(getLoadingRef),
         };
       });
+      // 之后再处理
       onMounted(() => {
         nextTick(() => {
-          watch(
+          const watchStop = watch(
             () => getBindRef.value.dataSource,
             () => {
               getScrollHeight();
@@ -101,6 +105,9 @@
               immediate: true,
             }
           );
+          onUnmounted(() => {
+            watchStop && watchStop();
+          });
         });
       });
 
@@ -110,6 +117,8 @@
         setDataSource,
         setPagination,
         setLoading,
+        setColumns,
+        getColumns,
         getPagination: () => unref(getPaginationRef),
         getPaginationRef: () => computed(() => getPaginationRef.value),
         getSelectedRowKeys,

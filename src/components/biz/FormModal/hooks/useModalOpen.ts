@@ -1,4 +1,4 @@
-import { computed, ComputedRef, ref, unref, UnwrapRef, watch } from "vue";
+import { computed, ComputedRef, onUnmounted, ref, unref, UnwrapRef, watch } from "vue";
 import { IObj } from "../../../../types";
 import { IFormActions, IFormModalProp, IModalActions } from "../../../../components";
 import { cloneDeep } from "lodash-es";
@@ -33,7 +33,7 @@ export default function useModalOpen(
     setModel(cloneDeep(initial));
   }
 
-  watch(
+  const watchStop = watch(
     () => getPropsRef.value.initModel,
     (val) => {
       if (val) {
@@ -42,6 +42,9 @@ export default function useModalOpen(
       }
     }
   );
+  onUnmounted(() => {
+    watchStop && watchStop();
+  });
 
   const titleRef = computed(() => {
     const { title } = unref(getPropsRef);

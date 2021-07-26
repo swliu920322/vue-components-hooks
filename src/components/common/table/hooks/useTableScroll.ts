@@ -19,7 +19,7 @@ export default function useTableScroll(
   // 滚动高度
   const scrollYHeight = ref<number>(0);
 
-  watch(
+  const watchStopX = watch(
     () => propsRef.value.scrollX,
     (val) => {
       if (val !== undefined) {
@@ -27,7 +27,7 @@ export default function useTableScroll(
       }
     }
   );
-  watch(
+  const watchStopY = watch(
     () => propsRef.value.scrollY,
     (val) => {
       if (val !== undefined) {
@@ -35,6 +35,10 @@ export default function useTableScroll(
       }
     }
   );
+  onUnmounted(() => {
+    watchStopX && watchStopX();
+    watchStopY && watchStopY();
+  });
   const getScrollX = computed(() => {
     let width = 0;
     if (unref(getRowSelectionRef)) {

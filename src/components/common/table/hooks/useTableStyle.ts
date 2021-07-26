@@ -1,4 +1,4 @@
-import { ComputedRef, ref, unref, watch } from "vue";
+import { ComputedRef, onUnmounted, ref, unref, watch } from "vue";
 import { IBasicTableProps } from "../basic-table.types";
 import { IObj } from "../../../../types";
 
@@ -11,7 +11,7 @@ export default function useTableStyle(propsRef: ComputedRef<Partial<IBasicTableP
     return "";
   }
   const stripedColor = ref<string>(propsRef.value.striped || "#fafafa");
-  watch(
+  const watchStop = watch(
     () => propsRef.value.striped,
     (val) => {
       if (val) {
@@ -19,6 +19,9 @@ export default function useTableStyle(propsRef: ComputedRef<Partial<IBasicTableP
       }
     }
   );
+  onUnmounted(() => {
+    watchStop && watchStop();
+  });
   return {
     getStripedColorRef: stripedColor,
     setStripedColor: (val: string) => (stripedColor.value = val),

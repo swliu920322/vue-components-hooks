@@ -87,6 +87,10 @@ export interface IBasicTableActionBase {
   getAllSelectedRowKeys: () => any[];
   // 清除选择的keys
   clearSelectedRowKeys: () => void;
+  // 获取columns
+  getColumns: () => IBasicColumn[];
+  // 设置columns
+  setColumns: (columns: IBasicColumn[]) => void;
   // 调整滚动高度
   getScrollHeight: () => void;
 }

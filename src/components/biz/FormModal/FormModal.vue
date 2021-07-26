@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-  import { useForm, BasicForm } from "@/components/common/form";
-  import { useModal, BasicModal } from "@/components/common/modal";
-  import { computed, defineComponent, nextTick, reactive, ref, toRef, watch, watchEffect } from "vue";
+  import { useForm, BasicForm } from "../../../components/common/form";
+  import { useModal, BasicModal } from "../../../components/common/modal";
+  import { computed, defineComponent, nextTick, onUnmounted, reactive, ref, toRef, watch } from "vue";
   import { IFormModalActions, IFormModalProp } from "./formModal.type";
 
   import { useModalFunc, useModalOpen } from "./hooks";
@@ -36,7 +36,7 @@
         return temp as Partial<IFormModalProp>;
       });
 
-      watch(
+      const watchStop = watch(
         () => model,
         () => {
           const { modelRef } = getPropsRef.value;
@@ -48,6 +48,9 @@
           deep: true,
         }
       );
+      onUnmounted(() => {
+        watchStop && watchStop();
+      });
 
       const [register, modalMethods] = useModal({});
       const [registerForm, formMethods] = useForm({});

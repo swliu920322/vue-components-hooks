@@ -1,17 +1,20 @@
 import { IFormProps } from "../../form/basic-form.type";
-import { computed, ref, Ref, unref, watch } from "vue";
+import { computed, onUnmounted, ref, Ref, unref, watch } from "vue";
 
 export default function useCols(propsRef: Ref<Partial<IFormProps>>) {
   const colRef = ref<[number, number]>(propsRef.value.col || [6, 18]);
   function setCol(val: [number, number]) {
     colRef.value = val;
   }
-  watch(
+  const watchStop = watch(
     () => unref(propsRef).col,
     (val) => {
       val && setCol(val);
     }
   );
+  onUnmounted(() => {
+    watchStop && watchStop();
+  });
   const getColRef = computed(() => {
     if (propsRef.value.layout === "inline") {
       return {

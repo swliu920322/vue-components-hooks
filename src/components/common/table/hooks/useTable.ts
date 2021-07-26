@@ -15,6 +15,8 @@ export const getTableMethods = (getInstance: () => any): Omit<IBasicTableActions
   getAllSelectedRowKeys: () => getInstance()?.getAllSelectedRowKeys(),
   clearSelectedRowKeys: () => getInstance()?.clearSelectedRowKeys(),
   getScrollHeight: () => getInstance().getScrollHeight(),
+  getColumns: () => getInstance().getColumns(),
+  setColumns: (columns) => getInstance().setColumns(columns),
 });
 export default function useTable(
   props: Partial<IBasicTableProps>
