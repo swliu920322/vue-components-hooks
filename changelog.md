@@ -97,8 +97,12 @@
 
 ### 1.3.1 2021-7-8 v0.2.7
 
-- 修改 model 的 setModal，属性替换改为深拷贝，移除 commonMap 和 addMap，editMap 不存在时不自动 pageChange 的问题,
-简化了pageChange的传入，rePageChange可以不传
+- 修改 model 的 setModal，属性替换改为深拷贝，移除 commonMap 和 addMap，editMap 不存在时不自动 pageChange 的问题, 简化了 pageChange 的传入，rePageChange 可以不传
 
 ### 1.3.1 2021-7-8 v0.2.8
-- 由于moment()的值会被拷贝出问题，setModal深拷贝换成lodash-es的深拷贝，
+
+- 由于 moment()的值会被拷贝出问题，setModal 深拷贝换成 lodash-es 的深拷贝，
+
+### 1.3.5 2021-7-26
+
+- 为 basic-table 增加 setColumns 和 getColumns,为所有的 watch 释放内存
