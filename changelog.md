@@ -103,6 +103,6 @@
 
 - 由于 moment()的值会被拷贝出问题，setModal 深拷贝换成 lodash-es 的深拷贝，
 
-### 1.3.5 2021-7-26
+### 1.3.6 2021-7-26
 
 - 为 basic-table 增加 setColumns 和 getColumns,为所有的 watch 释放内存

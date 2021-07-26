@@ -12,7 +12,7 @@ export default function useColumns(
     if (columns && Array.isArray(columns)) {
       if (unref(propsRef).columnsAlign) {
         // @ts-ignore
-        columnsRef.value = val.map((i) => ({
+        columnsRef.value = columns.map((i) => ({
           ...i,
           align: i.align || unref(propsRef).columnsAlign,
         }));
