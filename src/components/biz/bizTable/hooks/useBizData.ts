@@ -10,7 +10,11 @@ export default function useBizData(
   async function pageChange(obj?: { current?: number; pageSize?: number }) {
     tableMethods.setLoading(true);
     try {
-      const page = tableMethods.getPagination() as IPagination;
+      const page = tableMethods.getPagination();
+      if (typeof page === "boolean") {
+        console.error("如果不显示分页，建议自己手动获取数据源!");
+        return [];
+      }
       page.current = obj?.current || page.current;
       page.pageSize = obj?.pageSize || page.pageSize;
       const {
