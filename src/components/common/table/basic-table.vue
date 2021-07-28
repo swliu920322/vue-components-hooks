@@ -93,24 +93,23 @@
           loading: (attrs.loading ?? false) || unref(getLoadingRef),
         };
       });
+      let watchStop: any;
       // 之后再处理
-      onMounted(() => {
-        nextTick(() => {
-          const watchStop = watch(
-            () => getBindRef.value.dataSource,
-            () => {
-              getScrollHeight();
-            },
-            {
-              immediate: true,
-            }
-          );
-          onUnmounted(() => {
-            watchStop && watchStop();
-          });
-        });
+      onMounted(async () => {
+        await nextTick();
+        watchStop = watch(
+          () => getBindRef.value.dataSource,
+          () => {
+            getScrollHeight();
+          },
+          {
+            immediate: true,
+          }
+        );
       });
-
+      onUnmounted(() => {
+        watchStop && watchStop();
+      });
       const actions: IBasicTableActions = {
         setProps,
         getDataSource: () => unref(getDataSourceRef),
