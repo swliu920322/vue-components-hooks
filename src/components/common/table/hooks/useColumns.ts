@@ -41,7 +41,7 @@ export default function useColumns(
       columns.unshift({
         flag: "INDEX",
         title: "序号",
-        width: 50,
+        width: 65,
         align: "center",
         customRender: ({ index }) => {
           if (typeof getPagination === "boolean") {
