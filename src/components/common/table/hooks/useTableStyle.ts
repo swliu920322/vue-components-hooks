@@ -5,7 +5,7 @@ import { IObj } from "../../../../types";
 export default function useTableStyle(propsRef: ComputedRef<Partial<IBasicTableProps>>) {
   function getRowClassName(record: IObj, index: number) {
     const { striped } = unref(propsRef);
-    if (striped && (index || 0) % 2 === 0) {
+    if (striped && (index || 0) % 2 === 1) {
       return "ao-row__striped";
     }
     return "";
