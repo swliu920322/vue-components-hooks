@@ -1,10 +1,6 @@
 <template>
   <section ref="containerRef" style="height: 100%">
-    <ATable
-      ref="tableRef"
-      v-bind="getBindRef"
-      :rowClassName="(record, index) => (index % 2 === 1 ? null : 'table-striped')"
-    >
+    <ATable ref="tableRef" v-bind="getBindRef">
       <template v-for="item in Object.keys($slots)" v-slot:[item]="data">
         <slot :name="item" v-bind="data" />
       </template>
@@ -144,7 +140,7 @@
     font-weight: 600;
     background: #ededed;
   }
-  :deep(.table-striped) {
+  :deep(.ao-row__striped) {
     background-color: #fafafa;
   }
   :deep(.ant-table .ant-btn.ant-btn-link.icon-button) {
