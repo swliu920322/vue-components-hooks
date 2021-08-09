@@ -130,7 +130,7 @@
             name: fileList.value[0].name,
             size: fileList.value[0].size,
           },
-          content: new Uint8Array(imageBuffer.value as ArrayBuffer),
+          // content: new Uint8Array(imageBuffer.value as ArrayBuffer),
         };
       }
 
