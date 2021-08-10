@@ -4,13 +4,13 @@
     @registerEnd="registerEnd"
     @pageChange="pageChange"
     :dataSource="getDataSourceRef"
-    v-if="getDataSourceRef.length"
+    v-show="getDataSourceRef.length"
   >
     <template v-for="item in Object.keys($slots)" v-slot:[item]="data">
       <slot :name="item" v-bind="data" />
     </template>
   </BasicTable>
-  <AEmpty v-else />
+  <AEmpty v-show="!getDataSourceRef.length" />
 </template>
 
 <script lang="ts">
