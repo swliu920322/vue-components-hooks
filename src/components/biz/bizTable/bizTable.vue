@@ -4,13 +4,13 @@
     @registerEnd="registerEnd"
     @pageChange="pageChange"
     :dataSource="getDataSourceRef"
-    v-show="getDataSourceRef.length"
+    v-show="getDataSourceRef.length || loadingRef"
   >
     <template v-for="item in Object.keys($slots)" v-slot:[item]="data">
       <slot :name="item" v-bind="data" />
     </template>
   </BasicTable>
-  <AEmpty v-show="!getDataSourceRef.length" />
+  <AEmpty v-show="!getDataSourceRef.length && !loadingRef" />
 </template>
 
 <script lang="ts">
@@ -91,6 +91,7 @@
         getDataSourceRef,
         register,
         registerEnd,
+        loadingRef: tableMethods.getLoading(),
       };
     },
   });

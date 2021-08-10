@@ -75,6 +75,7 @@ export interface IBasicTableActionBase {
   setDataSource: (val: any[]) => void;
   // 设置loading
   setLoading: (val: boolean) => void;
+  getLoading: () => ComputedRef<boolean>;
   // 设置选中的keys
   setSelectedRowKeys: (rowKeys: any[]) => void;
   // 获取当前页选择的行

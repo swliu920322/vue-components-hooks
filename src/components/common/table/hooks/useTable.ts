@@ -8,6 +8,7 @@ export const getTableMethods = (getInstance: () => any): Omit<IBasicTableActions
   getDataSource: () => getInstance()?.getDataSource(),
   setDataSource: (val) => getInstance()?.setDataSource(val),
   setLoading: (val) => getInstance()?.setLoading(val),
+  getLoading: () => getInstance()?.getLoading(),
   setSelectedRowKeys: (rowKeys: string[]) => getInstance()?.setSelectedRowKeys(rowKeys),
   getSelectedRows: () => getInstance()?.getSelectedRows(),
   getSelectedRowKeys: () => getInstance()?.getSelectedRowKeys(),

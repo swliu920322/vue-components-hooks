@@ -112,6 +112,7 @@
         setDataSource,
         setPagination,
         setLoading,
+        getLoading: () => getLoadingRef,
         setColumns,
         getColumns,
         getPagination: () => unref(getPaginationRef),
