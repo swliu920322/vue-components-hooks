@@ -21,8 +21,8 @@ export function usePagination(emit: EmitType, initial?: Partial<IPagination>) {
   const basePagination = {
     total: 0,
     current: 1,
-    pageSize: 10,
-    defaultPageSize: 10,
+    pageSize: 20,
+    defaultPageSize: 20,
     size: "default",
     pageSizeOptions: ["10", "20", "30", "40"],
     onChange: undefined,

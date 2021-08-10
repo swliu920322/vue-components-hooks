@@ -4,15 +4,18 @@
     @registerEnd="registerEnd"
     @pageChange="pageChange"
     :dataSource="getDataSourceRef"
+    v-if="getDataSourceRef.length"
   >
     <template v-for="item in Object.keys($slots)" v-slot:[item]="data">
       <slot :name="item" v-bind="data" />
     </template>
   </BasicTable>
+  <AEmpty v-else />
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, toRef, onUnmounted } from "vue";
+  import { Empty } from "ant-design-vue";
   import { useBizData, useBizRemove } from "./hooks";
   import { BizTableProps } from "./bizTable.props";
   import { IBizTableActions, IBizTableProps } from "./bizTable.type";
@@ -21,7 +24,7 @@
 
   export default defineComponent({
     name: "bizTable",
-    components: { BasicTable },
+    components: { BasicTable, AEmpty: Empty },
     props: BizTableProps,
     emits: ["register"],
     setup(props, { emit }) {
